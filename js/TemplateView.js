@@ -20,7 +20,7 @@
             return x
         },
         loadTemplate: function(name) {
-            return this.stream('./Templates/' + name + '.html')
+            return this.stream('./templates/' + name + '.html')
         },
         initialize: function(options) {
             this.options = options || {}
