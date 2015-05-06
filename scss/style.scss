@@ -1,6 +1,13 @@
 @import "../bower_components/normalize-scss/_normalize.scss";
-@import "../bower_components/typeplate-starter-kit/css/_typeplate.scss";
+@import "../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss";
+@import "../bower_components/bitters/app/assets/stylesheets/_base.scss";
+@import "../bower_components/neat/app/assets/stylesheets/_neat.scss";
+
+@import "./typescale.scss";
 @import "./mixins.scss";
+
+
+
 
 /**
  * BOX-SIZING
@@ -38,7 +45,7 @@
 }
 
 @include gridify(2, 400);
-@include gridify(4, 600);
+@include gridify(3, 600);
 
 /**
  * PACE (automatic pre-loader thingy)
@@ -78,3 +85,5 @@ img {max-width:100%;}
 body {
     transition: opacity .25s ease;
 }
+
+@import "imports/_homepage.scss";
