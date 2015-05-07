@@ -86,4 +86,6 @@ body {
     transition: opacity .25s ease;
 }
 
+@import "./typescale.scss";
 @import "imports/_homepage.scss";
+@import "imports/_navigation_examples.scss";

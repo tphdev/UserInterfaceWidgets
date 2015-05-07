@@ -1019,7 +1019,7 @@
             return x;
         },
         loadTemplate: function loadTemplate(name) {
-            return this.stream("./Templates/" + name + ".html");
+            return this.stream("./templates/" + name + ".html");
         },
         initialize: function initialize(options) {
             this.options = options || {};
@@ -1075,22 +1075,44 @@ window.onload = app;
         initialize: function initialize() {
             console.log("router initialized");
             this.homeView = new Backbone.HomeView();
+            this.navExamplesView = new Backbone.NavExamplesView();
             Backbone.history.start();
         },
 
         routes: {
+            "navigation-examples": "goNavExamples",
             "*default": "goHome"
         },
 
         goHome: function goHome() {
-            console.log("homeRouterLoaded");
             this.homeView.render();
-        } });
+        },
+
+        goNavExamples: function goNavExamples() {
+            this.navExamplesView.render();
+        }
+    });
 
     Backbone.HomeView = MyViewConstructor.TemplateView.extend({
         el: ".wrapper",
         view: "homepage"
     });
+
+    Backbone.NavExamplesView = MyViewConstructor.TemplateView.extend({
+        el: ".wrapper",
+        view: "navigation-examples",
+
+        events: {
+            "click button": "popOutNav"
+        },
+
+        popOutNav: function popOutNav(evt) {
+            evt.preventDefault();
+            var evtTarget = $(evt.target);
+            $("nav.cbp-spmenu-top").toggleClass("pop-out");
+            evtTarget.toggleClass("popped");
+            evtTarget.hasClass("popped") ? evtTarget.text("-") : evtTarget.text("+");
+        } });
 
     exports.AppRouter = Backbone.AppRouter;
 })(typeof module === "object" ? module.exports : window);

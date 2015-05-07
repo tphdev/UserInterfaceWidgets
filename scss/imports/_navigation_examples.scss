@@ -1,0 +1,108 @@
+$nav-blue: rgba(118,156,184,1);
+$nav-red: rgba(197,107,106,1);
+$nav-purple: rgba(164,122,184,1);
+$nav-green: rgba(122,207,151,1);
+$nav-light: rgba(213,214,184,1);
+
+$page-colors: 
+	#ccc,
+	#aaa,
+	#888,
+	#ccc;	
+
+.click-me{
+	position: fixed;
+	top: 0;
+	right: 0;
+
+	button {
+		background: $nav-green;
+		transition: background .5s;
+		&.popped{
+			background: $nav-red;
+		}
+
+		&:hover{
+			background: $nav-purple;
+		}
+	}
+
+
+}
+
+nav{
+
+	&.cbp-spmenu-top{
+		position: fixed;
+		background: $nav-blue;
+		width: 100%;
+		height: 23rem;
+		top: -23rem;
+
+		transition: top .4s, height .3s;
+
+		@include outer-container(100%);	
+		@include display-context(table); 
+		
+		@include media($large-screen){
+			height: 7.5rem;
+			top: -7.5rem;
+		}
+	}
+	
+	&.cbp-spmenu-top.pop-out{
+		top: 0rem;
+	}
+
+	& > h3 {
+		font-size: 2.6em;
+		margin: 0;
+		text-align: center;
+		@include row();		
+	}
+	
+	.nav-options{
+		@include span-columns(12);
+		@include display-context(table); 
+
+		a {
+			text-align: center;
+			line-height: 4rem;
+			color: #333;
+			transition: background .2s;
+			vertical-align: top;
+			text-align: center;
+
+			&:hover{
+			background: $nav-light;
+			border-bottom: 2px solid #333;
+			}
+
+			@include span-columns(12 of 12);
+			@include media($large-screen){
+				$columns: (12 / 5);
+				@include span-columns($columns of 12);
+			}
+		}
+		
+		
+	}
+
+
+
+
+}
+
+main#nav-examples{
+	article {
+		padding: 0 1%;
+
+	//stops iterates 1,2,3
+	@for $i from 1 to 4{
+		&:nth-child(#{$i}){background: nth($page-colors, $i);}
+	}
+
+	}
+
+	
+}
