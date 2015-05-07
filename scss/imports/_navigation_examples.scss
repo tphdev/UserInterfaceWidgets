@@ -1,4 +1,5 @@
 $nav-blue: rgba(118,156,184,1);
+$nav-blue-translucent: rgba(98,116,154,.9);
 $nav-red: rgba(197,107,106,1);
 $nav-purple: rgba(164,122,184,1);
 $nav-green: rgba(122,207,151,1);
@@ -31,14 +32,12 @@ $page-colors:
 }
 
 nav{
-
 	&.cbp-spmenu-top{
 		position: fixed;
-		background: $nav-blue;
+		background: $nav-blue-translucent;
 		width: 100%;
 		height: 23rem;
 		top: -23rem;
-
 		transition: top .4s, height .3s;
 
 		@include outer-container(100%);	
@@ -58,6 +57,8 @@ nav{
 		font-size: 2.6em;
 		margin: 0;
 		text-align: center;
+		font-family: 'Noto Sans','Helvetica Neue',Helvetica,sans-serif;
+		color: #eee;
 		@include row();		
 	}
 	
@@ -68,7 +69,8 @@ nav{
 		a {
 			text-align: center;
 			line-height: 4rem;
-			color: #333;
+			color: #eee;
+			font-weight: 700;
 			transition: background .2s;
 			vertical-align: top;
 			text-align: center;
@@ -76,6 +78,7 @@ nav{
 			&:hover{
 			background: $nav-light;
 			border-bottom: 2px solid #333;
+			color: #333;
 			}
 
 			@include span-columns(12 of 12);
@@ -83,76 +86,71 @@ nav{
 				$columns: (12 / 5);
 				@include span-columns($columns of 12);
 			}
-		}
-		
-		
+		}	
 	}
-
-
-
-
 }
 
 main#nav-examples{
-.hero {  
-  $base-border-radius: 3px !default;
-  $action-color: #477DCA !default;
-  $large-screen: em(860) !default;
-  $hero-background-top: #7F99BE; 
-  $hero-background-bottom: #20392B;
-  $hero-color: white;
-  $gradient-angle: 10deg;
+	.hero {  
+	  $base-border-radius: 3px !default;
+	  $action-color: #477DCA !default;
+	  $large-screen: em(860) !default;
+	  $hero-background-top: #7F99BE; 
+	  $hero-background-bottom: #20392B;
+	  $hero-color: white;
+	  $gradient-angle: 10deg;
+	  $hero-image: '../images/js-multi.jpg';
 
-  @include background(linear-gradient($gradient-angle, $hero-background-bottom, $hero-background-top), no-repeat $hero-background-top scroll);
-  background-color: #324766;
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-bottom: 3em;
+	  @include background(url($hero-image), linear-gradient($gradient-angle, $hero-background-bottom, $hero-background-top), no-repeat $hero-background-top scroll);
+	  background-color: #324766;
+	  background-position: top;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  padding-bottom: 3em;
 
-  .hero-logo img {
-    height: 4em;
-    margin-bottom: 1em;
-  }
 
-  .hero-inner {
-    @include outer-container;
-    @include clearfix;
-    color: $hero-color;
-    margin: auto;
-    padding: 3.5em;
-    text-align: center;
+	  .hero-inner {
+	    @include outer-container;
+	    @include clearfix;
+	    color: $hero-color;
+	    margin: auto;
+	    padding: 3.5em;
+	    text-align: center;
 
-    .hero-copy {
-      text-align: center;
-      
-      h1 {
-        font-size: 1.6em;
-        margin-bottom: 0.5em;
+	    .hero-copy {
+	      text-align: center;
+	      background: rgba(55,55,55,.8);
+	      border-radius: 10px;
 
-        @include media($large-screen) {
-          font-size: 1.8em;
-        }
-      }
+	      h1 {
+	        font-size: 2.0em;
+	        margin-bottom: 0.5em;
+	        font-family: 'Courier',monospace;
 
-      p {
-        font-weight: 200;
-        line-height: 1.4em;
-        margin: 0 auto 3em auto; 
+	        @include media($large-screen) {
+	          font-size: 3.6em;
+	        }
+	      }
 
-        @include media($large-screen) {
-          font-size: 1.1em;
-          max-width: 40%;
-        }
-      }
-    }
+	      p {
+	      	text-align: right;
+	        font-weight: 700;
+	        line-height: 1.4em;
+	        margin: 0 auto 3em auto; 
 
-    button {
-      @include button(flat, $action-color);
-      padding: 0.7em 1em;
-    }
-  }
-}
+	        @include media($large-screen) {
+	          font-size: 1.1em;
+	          max-width: 80%;
+	        }
+	      }
+	    }
+
+	    button {
+	      @include button(flat, $action-color);
+	      padding: 0.7em 1em;
+	    }
+	  }
+	}
 
 
 	article {
@@ -161,6 +159,31 @@ main#nav-examples{
 	//stops iterates 1,2,3
 		@for $i from 2 to 5{
 			&:nth-child(#{$i}){background: nth($page-colors, $i);}
+		}
+
+		hr{
+			margin: 1.5em auto;
+		}
+
+		.showpiece{
+			margin: 0 auto;
+			text-align: center;
+
+			img{
+				display: inline-block;
+				width: 8rem;
+				border: 1px solid black;	
+				
+
+				@include media($medium-screen) {
+	        	width: 16rem;  
+       			}
+				@include media($large-screen) {
+	        	width: 20rem;  
+       			}
+			}
+
+			
 		}
 
 	}
