@@ -1,0 +1,111 @@
+main#wrapper-m-and-m{ 
+  background: $my-light-blue;
+  padding-top: 3rem;
+  @include outer-container(100%);
+    
+    header{
+      color: white;
+      background-color: $my-dark-blue;
+      margin: auto;
+      padding: 2.5em;
+      text-align: center;
+
+      @include row(table);
+
+
+        h1 {
+          font-size: 1.6em;
+          margin-bottom: 0.5em;
+          color: white;
+
+          @include media($large-screen) {
+            font-size: 1.8em;
+          }
+        }
+
+        p {
+          font-weight: 200;
+          line-height: 1.4em;
+          margin: 0 auto 3em auto; 
+
+          @include media($large-screen) {
+            font-size: 1.1em;
+            max-width: 40%;
+          }
+        }
+  }
+
+  section{
+    color: white;
+    padding: 1.0rem .25rem;
+    height: 100vh;
+
+    @include media($medium-screen){
+        @include span-columns(6);
+
+    }
+    
+    h3{
+      text-align: center;
+      color: $font-black;
+      padding: 1rem;
+    }
+
+    li{
+      display: inline-block;
+      margin: .3rem;
+    }
+
+    button{
+      border: 1px $white-translucent solid;
+    }
+
+    &.menus{
+      background: $my-orange;
+      h3{
+        background: $my-light-orange;
+      }
+
+      button{
+        background-color: $my-dark-orange;
+      }
+
+      .description{
+        padding-right: .5rem;
+        text-align: right;
+        @include span-columns(6); 
+      } 
+
+      .buttons-list{
+        border-left: 1px solid #fff;
+        padding-left: .5rem;
+        text-align: left;
+        @include span-columns(6);
+      }
+    }
+
+    &.modals{
+      background: $my-green;
+      
+      h3{
+        background: $my-light-green;
+      }
+
+      button{
+        background-color: $my-dark-green;
+      }
+
+      .buttons-list{
+        padding-right: .5rem;
+        text-align: right;
+        @include span-columns(6);
+      }
+      
+      .description{
+        border-left: 1px solid #fff;
+        padding-left: .5rem;
+        @include span-columns(6); 
+      }
+    }
+  }
+}

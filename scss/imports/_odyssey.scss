@@ -1,15 +1,22 @@
-$nav-blue: rgba(118,156,184,1);
-$nav-blue-translucent: rgba(98,116,154,.9);
+$nav-blue: rgba(39,67,96,1);
+$nav-blue-translucent: rgba(39,67,96,.9);
 $nav-red: rgba(197,107,106,1);
-$nav-purple: rgba(164,122,184,1);
-$nav-green: rgba(122,207,151,1);
-$nav-light: rgba(213,214,184,1);
+$nav-purple: rgba(112,47,85,1);
+$nav-green: rgba(1,195,102,1);
+$nav-light: rgba(241,143,53,1);
+$nav-dark: rgba(23,24,72,1);
+$nav-dark-translucent: rgba(23,24,72,.7);
+
+
+
+
 
 $page-colors: 
-	#ccc,
-	#aaa,
-	#888,
-	#ccc;	
+	rgba(182,175,217,1),
+	rgba(176,145,140,1),
+	rgba(207,170,140,1),
+	rgba(201,198,169,1),
+	rgba(197,116,99,1);
 
 .click-me{
 	position: fixed;
@@ -90,7 +97,75 @@ nav{
 	}
 }
 
+.md-overlay{
+	visibility: hidden;
+	opacity: 0;
+
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: $nav-dark-translucent;
+	z-index: 1000;
+	transition: all .3s;	
+}
+
+.md-modal{
+	opacity: 0;
+	visibility: hidden;
+	position: fixed;
+	z-index: 1100;
+	top: 50%;
+	left: 50%;
+
+
+	perspective: 1300px;
+	transform: translateX(-50%) translateY(-50%);
+
+	.md-content{
+		background: $nav-green;
+		color: white;
+		text-shadow: 1px 1px 1px #333;
+		padding: 5%;
+		width: 400px;
+		height: 300px;
+
+
+		transform: translateZ(600px) rotate(20deg);
+		transition: all .5s;
+
+		.exit-modal{
+			position: fixed;
+			top: 5%;
+			right: 5%;
+			background: rgba(255,255,255,.76);
+			color: $nav-red;
+			border: black solid 1px;
+			transform: translateX(5%) translateY(5%);
+
+			&:hover{
+				background: rgba(150,150,150,.9);
+			}
+
+		}	
+	}
+}
+
+.md-show {
+	&~.md-overlay,
+	&.md-modal{
+		visibility: visible;
+		opacity: 1;
+	}
+
+	& >.md-content{
+		transform: translateZ(0px) rotate(0deg);
+	}
+}
+
 main#nav-examples{
+
 	.hero {  
 	  $base-border-radius: 3px !default;
 	  $action-color: #477DCA !default;
@@ -119,8 +194,9 @@ main#nav-examples{
 
 	    .hero-copy {
 	      text-align: center;
-	      background: rgba(55,55,55,.8);
+	      background: $nav-dark-translucent;
 	      border-radius: 10px;
+	      padding: 1% 0;
 
 	      h1 {
 	        font-size: 2.0em;
@@ -136,7 +212,9 @@ main#nav-examples{
 	      	text-align: right;
 	        font-weight: 700;
 	        line-height: 1.4em;
-	        margin: 0 auto 3em auto; 
+	        margin: 0 auto 1em auto;
+	      	font-size: .90em;
+
 
 	        @include media($large-screen) {
 	          font-size: 1.1em;
@@ -148,45 +226,52 @@ main#nav-examples{
 	    button {
 	      @include button(flat, $action-color);
 	      padding: 0.7em 1em;
+	      margin: 1em 0;
 	    }
 	  }
 	}
 
 
-	article {
+	section {
 		padding: 0 1%;
-
 	//stops iterates 1,2,3
-		@for $i from 2 to 5{
+		@for $i from 2 to 6{
 			&:nth-child(#{$i}){background: nth($page-colors, $i);}
 		}
+		
+		article{
+			@include outer-container(800px);
 
-		hr{
-			margin: 1.5em auto;
-		}
-
-		.showpiece{
-			margin: 0 auto;
-			text-align: center;
-
-			img{
-				display: inline-block;
-				width: 8rem;
-				border: 1px solid black;	
-				
-
-				@include media($medium-screen) {
-	        	width: 16rem;  
-       			}
-				@include media($large-screen) {
-	        	width: 20rem;  
-       			}
+			hr{
+				margin: 1.5em auto;
 			}
 
-			
+			.showpiece{
+				margin: 0 auto;
+				text-align: center;
+
+				img{
+					display: inline-block;
+					width: 12rem;
+					border: 1px solid black;	
+					
+
+					@include media($medium-screen) {
+		        	width: 16rem;  
+	       			}
+					@include media($large-screen) {
+		        	width: 20rem;  
+	       			}
+				}
+			}
+
+			.code-block{
+				background: rgb(224,224,224);
+				font-family: monospace;
+				margin: 0 auto;
+				width: rem(300);
+				padding: 1%;
+			}
 		}
-
 	}
-
-	
 }

@@ -1075,21 +1075,26 @@ window.onload = app;
         initialize: function initialize() {
             console.log("router initialized");
             this.homeView = new Backbone.HomeView();
-            this.navExamplesView = new Backbone.NavExamplesView();
+            this.odysseyView = new Backbone.OdysseyView();
+            this.menusAndModalsView = new Backbone.MenusAndModalsView();
             Backbone.history.start();
         },
 
         routes: {
-            "navigation-examples": "goNavExamples",
-            "*default": "goHome"
-        },
+            "menus-and-modals": "goMenusAndModals",
+            odyssey: "goNavExamples",
+            "*default": "goHome" },
 
         goHome: function goHome() {
             this.homeView.render();
         },
 
         goNavExamples: function goNavExamples() {
-            this.navExamplesView.render();
+            this.odysseyView.render();
+        },
+
+        goMenusAndModals: function goMenusAndModals() {
+            this.menusAndModalsView.render();
         }
     });
 
@@ -1098,12 +1103,14 @@ window.onload = app;
         view: "homepage"
     });
 
-    Backbone.NavExamplesView = MyViewConstructor.TemplateView.extend({
+    Backbone.OdysseyView = MyViewConstructor.TemplateView.extend({
         el: ".wrapper",
-        view: "navigation-examples",
+        view: "odyssey",
 
         events: {
-            "click button": "popOutNav"
+            "click button.showMenu": "popOutNav",
+            "click button.modal": "toggleModal",
+            "click button.exit-modal": "toggleModal"
         },
 
         popOutNav: function popOutNav(evt) {
@@ -1112,7 +1119,18 @@ window.onload = app;
             $("nav.cbp-spmenu-top").toggleClass("pop-out");
             evtTarget.toggleClass("popped");
             evtTarget.hasClass("popped") ? evtTarget.text("-") : evtTarget.text("+");
+        },
+
+        toggleModal: function toggleModal(evt) {
+            evt.preventDefault();
+            $(".md-effect").toggleClass("md-show");
+            console.log("toggled");
         } });
+
+    Backbone.MenusAndModalsView = MyViewConstructor.TemplateView.extend({
+        el: ".wrapper",
+        view: "menus-and-modals"
+    });
 
     exports.AppRouter = Backbone.AppRouter;
 })(typeof module === "object" ? module.exports : window);
