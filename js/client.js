@@ -5,8 +5,11 @@
     _ = require('lodash'),
     Backbone = require('backbone'),
     MyViewConstructor = require('./TemplateView.js')
-    Backbone.$ = $;
-    
+
+    Backbone.$ = $,
+
+
+
 
     Backbone.AppRouter = Backbone.Router.extend({
         initialize: function(){
@@ -14,10 +17,12 @@
             this.homeView = new Backbone.HomeView();
             this.odysseyView = new Backbone.OdysseyView();
             this.menusAndModalsView = new Backbone.MenusAndModalsView();
+            this.detailsView = new Backbone.DetailsView();
             Backbone.history.start();
         },
 
         routes: {
+            "details": "goToDetails",
             "menus-and-modals": "goMenusAndModals",
             "odyssey":"goNavExamples",
             "*default": "goHome",
@@ -29,10 +34,24 @@
 
         goNavExamples: function(){
             this.odysseyView.render();
+            window.scrollTo(0,0);
+
         },
 
         goMenusAndModals: function(){
+            var self = this
             this.menusAndModalsView.render();
+            window.scrollTo(0,0);
+
+        },
+
+        goToDetails: function(){
+            var self = this;
+            if(window){window.scrollTo(0,0);}
+
+            this.detailsView.render();
+            console.log('Element Not Found')
+            this.detailsView.doSomething();
         }
     });
 
@@ -41,7 +60,7 @@
         view: 'homepage'
     });
 
-     Backbone.OdysseyView = MyViewConstructor.TemplateView.extend({
+    Backbone.OdysseyView = MyViewConstructor.TemplateView.extend({
         el: '.wrapper',
         view: 'odyssey',
 
@@ -69,6 +88,38 @@
     Backbone.MenusAndModalsView = MyViewConstructor.TemplateView.extend({
         el: ".wrapper",
         view: 'menus-and-modals'
+    })
+
+    Backbone.DetailsView = MyViewConstructor.TemplateView.extend({
+        el: '.wrapper',
+        view: 'details',
+
+        events: {
+            'click .modal-btn': 'doSomething'
+        },
+
+        doSomething: function(evt){
+            console.log('.content-slider Found...')
+            var cs = $('.content-slider');
+            var insertOverlay = function(e){
+                var effect = $(e.target).attr('data-effect');
+                $('.mdl-context'+'.'+effect).addClass('mdl-show')
+            }
+            
+            var removeOverlay = function(){
+                $('.mdl-context').removeClass('mdl-show');
+            }
+
+            insertOverlay(evt);
+
+            $('.mdl-overlay').on('click', removeOverlay)
+            $('.exit-modal').on('click', removeOverlay)
+
+
+
+        },
+
+
     })
 
     exports.AppRouter = Backbone.AppRouter

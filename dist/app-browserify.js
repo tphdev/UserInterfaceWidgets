@@ -1069,18 +1069,19 @@ window.onload = app;
         _ = require("lodash"),
         Backbone = require("backbone"),
         MyViewConstructor = require("./TemplateView.js");
-    Backbone.$ = $;
 
-    Backbone.AppRouter = Backbone.Router.extend({
+    Backbone.$ = $, Backbone.AppRouter = Backbone.Router.extend({
         initialize: function initialize() {
             console.log("router initialized");
             this.homeView = new Backbone.HomeView();
             this.odysseyView = new Backbone.OdysseyView();
             this.menusAndModalsView = new Backbone.MenusAndModalsView();
+            this.detailsView = new Backbone.DetailsView();
             Backbone.history.start();
         },
 
         routes: {
+            details: "goToDetails",
             "menus-and-modals": "goMenusAndModals",
             odyssey: "goNavExamples",
             "*default": "goHome" },
@@ -1091,10 +1092,24 @@ window.onload = app;
 
         goNavExamples: function goNavExamples() {
             this.odysseyView.render();
+            window.scrollTo(0, 0);
         },
 
         goMenusAndModals: function goMenusAndModals() {
+            var self = this;
             this.menusAndModalsView.render();
+            window.scrollTo(0, 0);
+        },
+
+        goToDetails: function goToDetails() {
+            var self = this;
+            if (window) {
+                window.scrollTo(0, 0);
+            }
+
+            this.detailsView.render();
+            console.log("Element Not Found");
+            this.detailsView.doSomething();
         }
     });
 
@@ -1131,6 +1146,32 @@ window.onload = app;
         el: ".wrapper",
         view: "menus-and-modals"
     });
+
+    Backbone.DetailsView = MyViewConstructor.TemplateView.extend({
+        el: ".wrapper",
+        view: "details",
+
+        events: {
+            "click .modal-btn": "doSomething"
+        },
+
+        doSomething: function doSomething(evt) {
+            console.log(".content-slider Found...");
+            var cs = $(".content-slider");
+            var insertOverlay = function insertOverlay(e) {
+                var effect = $(e.target).attr("data-effect");
+                $(".mdl-context" + "." + effect).addClass("mdl-show");
+            };
+
+            var removeOverlay = function removeOverlay() {
+                $(".mdl-context").removeClass("mdl-show");
+            };
+
+            insertOverlay(evt);
+
+            $(".mdl-overlay").on("click", removeOverlay);
+            $(".exit-modal").on("click", removeOverlay);
+        } });
 
     exports.AppRouter = Backbone.AppRouter;
 })(typeof module === "object" ? module.exports : window);

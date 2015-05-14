@@ -1,0 +1,438 @@
+main#details{ 
+  padding-top: 2.0rem .25rem;
+
+  
+  
+    header{
+      color: white;
+      background-color: $my-dark-purple;
+      margin: auto;
+      padding: 2.5em;
+      text-align: center;
+      @include fill-parent();
+      @include row(table);
+
+
+        h1 {
+          font-size: 1.6em;
+          margin-bottom: 0.5em;
+          color: white;
+
+          @include media($large-screen) {
+            font-size: 1.8em;
+          }
+        }
+
+        p {
+          font-weight: 200;
+          line-height: 1.4em;
+          margin: 0 auto 3em auto; 
+
+          @include media($large-screen) {
+            font-size: 1.1em;
+            max-width: 40%;
+          }
+        }
+  }
+    $med-sc-height: 30rem;
+    $med-lg-sc-height:25rem;
+    $lg-sc-height: 22rem;
+
+  .row1{
+    @include outer-container(100%);
+    @include row(table);
+
+    section{
+         @include media($medium-screen){
+            @include span-columns(4);
+            height: $med-sc-height;
+        }
+    
+      @include media(790px){
+        height: $med-lg-sc-height;
+      }
+
+      @include media($large-screen){
+          height: $lg-sc-height;
+      }
+
+
+      &:nth-of-type(2n){
+        @include media($medium-screen) {
+          @include span-columns(8);
+          @include omega();
+        }
+
+      }
+    }
+  }
+  
+  .row2{
+     @include outer-container(100%);
+     @include fill-parent();
+     @include row(table);
+     @include omega();
+
+  }
+
+  .row3{
+    @include outer-container(100%);
+    @include row(table);
+
+    section{
+        @include media($medium-screen){
+            @include span-columns(7);
+            height: $med-sc-height;
+        }
+        
+        @include media(790px){
+          height: $med-lg-sc-height;
+        }
+
+        @include media($large-screen){
+            height: $lg-sc-height;
+        }
+
+        &:nth-of-type(2n){
+          @include media($medium-screen) {
+            @include span-columns(5);
+            @include omega();
+          }
+        }   
+    }
+  }
+
+
+  section{
+    color: $my-dark-purple;
+    padding: 1.0rem;
+
+    h3{
+      text-align: center;
+      padding: 1rem;
+      color: #fff;
+      text-shadow: 1px 1px #555;
+    }
+
+    li{
+      display: inline-block;
+      margin: .3rem;
+    }
+
+    button{
+      border: 1px $white-translucent solid;
+    }
+    
+
+    &.modals {
+      $section-color: $my-blue;
+      background: #fff;
+      border: 3px solid $section-color;
+
+      h3{
+        background: $section-color;
+        text-shadow: 1px 1px #555;
+      }
+
+      button{
+        background-color: $my-dark-green;
+      }
+
+      .buttons-list{
+        padding-right: .5rem;
+        text-align: right;
+        @include span-columns(6);
+      }
+      
+      .description{
+        border-left: 1px solid #fff;
+        padding-left: .5rem;
+        @include span-columns(6);
+        @include omega();
+      }
+    }
+
+
+    &.tabs {
+        $section-color: $my-purple;
+        background: #fff;
+        border: 3px solid $section-color;
+
+        h3 {
+          text-shadow: 1px 1px #555;
+          background: $section-color;
+        }
+
+        button {
+          background-color: $my-dark-blue;
+        }
+
+        .description {
+          padding-right: .5rem;
+          text-align: right;
+          @include span-columns(6); 
+        }
+
+        .buttons-list {
+          border-left: 1px solid #fff;
+          padding-left: .5rem;
+        text-align: left;
+        @include span-columns(6);
+        @include omega();
+        }
+    }
+
+    &.content-slideshow {
+        $section-color: $my-red;
+        background: #fff;
+        border: 3px solid $section-color;
+      
+      h3 {
+        background: $section-color;
+        width: 100%;
+      }
+    }   
+    
+    &.accordion{
+      $section-color: $my-green;
+      background: #fff;
+      border: 3px solid $section-color;
+      
+      h3 {
+        background: $section-color;
+        text-shadow: 1px 1px #555;
+      }
+    }
+
+    &.tool-tips{
+      $section-color: $my-orange;
+      background: #fff;
+      border: 3px solid $section-color;
+      
+      h3 {
+        background: $section-color;
+        text-shadow: 1px 1px #555;
+      }
+
+      ul{
+        position: relative;
+        width: 100%;
+
+        li{
+          display: block;
+          position: absolute;
+          
+          &.top{top:0; left: 50%;}
+          &.right{top:50%; left: 0%;}
+          &.bottom{bottom:0; left: 50%;}
+          &.right{top:50%; right: 100%;}
+        }
+      }
+    }  
+  
+  }
+}
+
+
+$mdl-bg-color: $my-green;
+$mdl-font-color: #fff;
+$mdl-txt-shadow: 1px 1px #555;
+
+
+.mdl-context{
+  opacity: 0;
+  position: fixed;
+  visibility: hidden;
+  transition: all .5s;
+  z-index: 2000;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+
+    .mdl-window{
+      padding: 1rem;
+      background: $mdl-bg-color;
+      color: $mdl-font-color;
+      text-shadow: $mdl-txt-shadow;
+      width: 400px;
+      height: 300px;
+      transition: all .5s;
+      text-align: justify;
+
+
+      .exit-modal{
+          position: fixed;
+          top: 2%;
+          right: 2%;
+          background: rgba(255,255,255,.76);
+          color: $nav-red;
+          border: black solid 1px;
+          transform: translateX(2%) translateY(2%);
+          padding: .5em .75em;
+
+        &:hover{
+          background: rgba(150,150,150,.9);
+        }
+      } 
+    }
+}
+
+.mdl-overlay{
+  visibility: hidden;
+  position: fixed;
+  opacity: 0;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  top:0;
+  left: 0;  
+  background-color: rgba(100,100,100,.7);
+  transition: all .4s;
+}
+
+.mdl-show {
+  & ~ .mdl-overlay,
+  &.mdl-context{
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.mdl-effect-slide-in{
+  left: 0%;
+  &.mdl-show{
+    left:  50%;
+  }
+}
+
+.mdl-effect-drop{
+  top: 0%;
+  &.mdl-show{
+    top: 50%;
+  }
+}
+
+.mdl-effect-flip{
+  transform: translateX(-50%) translateY(-50%) rotateZ(90deg);
+
+  &.mdl-show{
+    transform: translateX(-50%) translateY(-50%) rotateZ(0deg); 
+  }
+}
+
+.mdl-effect-swing{
+  transform: translateX(-50%) translateY(-50%) rotateX(120deg);
+
+  &.mdl-show{
+    transform: translateX(-50%) translateY(-50%) rotateX(0deg); 
+  }
+}
+
+.mdl-effect-fall {
+  perspective: 1300px;
+  .mdl-window{ transform: translateZ(600px); }
+  &.mdl-show >.mdl-window{ transform: translateZ(0px);}
+}
+
+
+
+
+
+
+
+.content-SLIDER{
+  display:none;
+  *{
+    outline: rgba(84,111,49,.23) 1px solid;
+  }
+
+  $my-slider-color: navy;
+  color: $my-slider-color;
+  
+  background: white;
+  border: 2px solid $my-slider-color;
+  
+  .line-up-blocks{
+    font-size: 0;
+    & > *{
+      display: inline-block;
+      font-size: medium;
+      vertical-align: top;
+    }
+  }
+
+  .top-slider-container{
+    padding: .5rem .5rem .5rem .5rem;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: block;
+
+  .copy-area{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; 
+      padding: 0;
+    margin: 0;
+
+    li{
+      position: absolute;
+      height: 100%;
+      width: 100%; 
+      display: list-item;
+      left: 102%;
+      top:0%;
+      padding: .5rem;
+
+        &.current-content{
+          left: 0%;
+        }
+
+        h1{
+          text-align: right;
+          border-bottom: 2px solid $my-slider-color;
+          display: block;
+          margin-bottom: 0px;
+        }
+
+        p {
+          padding: .5rem;
+          text-align: justify;
+          @media screen and (min-width: 660px){
+            width: 50%;
+            
+            &:first-of-type{
+              border-right: dashed 1px $my-slider-color;
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+
+  .bottom-slider-container{
+    ul{
+      border-top: 2px solid $my-slider-color;
+      
+      li{
+        display: inline-block;
+        width: 20%;
+        margin: 0;
+        text-align: center;
+
+        &:nth-child(1n+2){
+          border-left: 2px solid $my-slider-color;
+        }
+        
+        a{
+          display: block;
+        }
+      }
+    }
+  }
+  
+}

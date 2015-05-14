@@ -6,8 +6,9 @@
 @import "./typescale.scss";
 @import "./mixins.scss";
 
-
+$my-dark-purple: rgba(66,46,74,1);
 $my-purple: rgba(145,101,162,1);
+$my-light-purple: rgba(169,118,189,1);
 $my-dark-blue: rgba(17,73,115,1);
 $my-blue: rgba(29,122,192,1);
 $my-light-blue: rgba(121,180,224,1);
@@ -17,6 +18,7 @@ $my-light-green: rgba(99,219,140,1);
 $my-dark-orange: rgba(107,67,1,1);
 $my-light-orange: rgba(255,169,70,1);
 $my-orange: rgba(189,119,8,1);
+$my-light-red: rgba(210,110,99,1);
 $my-red: rgba(190,66,64,1);
 $my-yellow: rgba(189,167,8,1);
 $my-aqua: rgba(29,193,192,1);
@@ -95,6 +97,7 @@ $white-translucent: rgba(255,255,255,.7);
  * GENERAL
  */
 
+
 img {max-width:100%;}
 
 body {
@@ -105,3 +108,4 @@ body {
 @import "imports/_homepage.scss";
 @import "imports/_odyssey.scss";
 @import "imports/_menus-and-modals.scss";
+@import "imports/_details.scss";

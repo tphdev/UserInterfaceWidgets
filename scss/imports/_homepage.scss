@@ -7,9 +7,8 @@ main#homepage{
     $hero-background-bottom: #20392B;
     $hero-color: white;
     $gradient-angle: 10deg;
-    $hero-image: 'https:raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png';
 
-    @include background(url($hero-image), linear-gradient($gradient-angle, $hero-background-bottom, $hero-background-top), no-repeat $hero-background-top scroll);
+    @include background(linear-gradient($gradient-angle, $hero-background-bottom, $hero-background-top), no-repeat $hero-background-top scroll);
     background-color: #324766;
     background-position: top;
     background-repeat: no-repeat;
@@ -81,10 +80,10 @@ main#homepage{
     $flex-box-color: transparentize($base-font-color, 0.3);
     $flex-box-top-colors: 
       $my-red, 
-      $my-aqua, 
+      $my-blue, 
       $my-purple, 
-      $my-blue,
-      #CCC,
+      $my-green,
+      $font-black,
       $my-orange;
 
       @include clearfix;
