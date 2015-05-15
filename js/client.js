@@ -51,7 +51,7 @@
 
             this.detailsView.render();
             console.log('Element Not Found')
-            this.detailsView.doSomething();
+            this.detailsView.overlay();
         }
     });
 
@@ -95,10 +95,12 @@
         view: 'details',
 
         events: {
-            'click .modal-btn': 'doSomething'
+            'click .modal-btn': 'overlayHandler',
+            'click .tab': 'tabHandler'
+
         },
 
-        doSomething: function(evt){
+        overlayHandler: function(evt){
             console.log('.content-slider Found...')
             var cs = $('.content-slider');
             var insertOverlay = function(e){
@@ -109,15 +111,27 @@
             var removeOverlay = function(){
                 $('.mdl-context').removeClass('mdl-show');
             }
-
             insertOverlay(evt);
-
             $('.mdl-overlay').on('click', removeOverlay)
             $('.exit-modal').on('click', removeOverlay)
-
-
-
         },
+
+        tabHandler: function(evt){
+            var $currentTab = $('.selected-tab'),
+                $selectedTarget = $(evt.target),
+                selectedIndex = $selectedTarget.index()+1;
+
+
+            $currentTab.removeClass('selected-tab');
+            $('.selected-article').removeClass('selected-article')
+
+            console.log(selectedIndex+1)
+            $selectedTarget.addClass('selected-tab');
+            $('.tabs-content > article:nth-of-type('+selectedIndex+')').addClass('selected-article')
+
+        }
+
+
 
 
     })
