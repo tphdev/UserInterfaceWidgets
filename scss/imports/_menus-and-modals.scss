@@ -1,46 +1,18 @@
 
 main#wrapper-m-and-m{ 
   background: $my-light-blue;
-  padding-top: 2.0rem;
   @include outer-container(100%);
     
-    header{
-      color: white;
-      background-color: $my-dark-blue;
-      margin: auto;
-      padding: 2.5em;
-      text-align: center;
-
-      @include row(table);
-
-
-        h1 {
-          font-size: 1.6em;
-          margin-bottom: 0.5em;
-          color: white;
-
-          @include media($large-screen) {
-            font-size: 1.8em;
-          }
-        }
-
-        p {
-          font-weight: 200;
-          line-height: 1.4em;
-          margin: 0 auto 3em auto; 
-
-          @include media($large-screen) {
-            font-size: 1.1em;
-            max-width: 40%;
-          }
-        }
+  header.theme-header{
+    background-color: $my-dark-blue;
   }
+
 
   section{
     color: white;
     padding: 1.0rem .25rem;
     height: 100vh;
-
+    @include row(table);
     @include media($medium-screen){
         @include span-columns(6);
 

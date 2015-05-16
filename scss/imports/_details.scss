@@ -2,38 +2,10 @@ main#details{
   padding-top: 2.0rem .25rem;
 
   
-  
-    header{
-      color: white;
-      background-color: $my-dark-purple;
-      margin: auto;
-      padding: 2.5em;
-      text-align: center;
-      @include fill-parent();
-      @include row(table);
-
-
-        h1 {
-          font-size: 1.6em;
-          margin-bottom: 0.5em;
-          color: white;
-
-          @include media($large-screen) {
-            font-size: 1.8em;
-          }
-        }
-
-        p {
-          font-weight: 200;
-          line-height: 1.4em;
-          margin: 0 auto 3em auto; 
-
-          @include media($large-screen) {
-            font-size: 1.1em;
-            max-width: 40%;
-          }
-        }
+  header.theme-header{
+    background-color: $my-dark-purple
   }
+  
     $med-sc-height: 30rem;
     $med-lg-sc-height:25rem;
     $lg-sc-height: 22rem;
@@ -107,15 +79,11 @@ main#details{
     color: $my-dark-purple;
     padding: 1.0rem;
 
-    h3{
+    h4{
       text-align: center;
       padding: 1rem;
       color: #fff;
       text-shadow: 1px 1px #555;
-    }
-
-    li{
-      margin: .3rem;
     }
 
     button{
@@ -128,7 +96,7 @@ main#details{
       background: #fff;
       border: 3px solid $section-color;
 
-      h3{
+      h4{
         background: $section-color;
         text-shadow: 1px 1px #555;
       }
@@ -157,7 +125,7 @@ main#details{
         background: #fff;
         border: 3px solid $section-color;
 
-        h3 {
+        h4 {
           text-shadow: 1px 1px #555;
           background: $section-color;
         }
@@ -234,9 +202,6 @@ main#details{
           }
 
         }
-
-
-
     }
 
     &.content-slideshow {
@@ -244,7 +209,7 @@ main#details{
         background: #fff;
         border: 3px solid $section-color;
       
-      h3 {
+      h4 {
         background: $section-color;
         width: 100%;
       }
@@ -255,7 +220,7 @@ main#details{
       background: #fff;
       border: 3px solid $section-color;
       
-      h3 {
+      h4 {
         background: $section-color;
         text-shadow: 1px 1px #555;
       }
@@ -266,7 +231,7 @@ main#details{
       background: #fff;
       border: 3px solid $section-color;
       
-      h3 {
+      h4 {
         background: $section-color;
         text-shadow: 1px 1px #555;
       }
@@ -308,11 +273,15 @@ main#details{
           }
         }
       }
-    }  
-  
+    }   
   }
 }
 
+// -----------------------------
+// -----------------------------
+// -------- MODAL ------------
+// -----------------------------
+// -----------------------------
 
 $mdl-bg-color: $my-green;
 $mdl-font-color: #fff;
@@ -416,13 +385,15 @@ $mdl-txt-shadow: 1px 1px #555;
 }
 
 
+// -----------------------------
+// -----------------------------
+// -------- Content Slider ------------
+// -----------------------------
+// -----------------------------
 
 
+.content-slider {
 
-
-
-.content-SLIDER{
-  display:none;
   *{
     outline: rgba(84,111,49,.23) 1px solid;
   }
@@ -445,74 +416,79 @@ $mdl-txt-shadow: 1px 1px #555;
   .top-slider-container{
     padding: .5rem .5rem .5rem .5rem;
     position: relative;
-    height: 100%;
-    width: 100%;
+    width: 100%;  
     display: block;
+    height: 10rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
-  .copy-area{
-    position: relative;
-    height: 100%;
-    width: 100%;
-    overflow: hidden; 
-      padding: 0;
-    margin: 0;
-
-    li{
-      position: absolute;
-      height: 100%;
-      width: 100%; 
-      display: block;
-      left: 102%;
-      top:0%;
-      padding: .5rem;
-
-        &.current-content{
-          left: 0%;
-        }
-
-        h1{
-          text-align: right;
-          border-bottom: 2px solid $my-slider-color;
+    .copy-area{
+      position: relative;
+      width: 100%;
+        padding: 0;
+      margin: 0;
+      
+        li {
+          position: absolute;
+          width: 100%; 
           display: block;
-          margin-bottom: 0px;
-        }
-
-        p {
+          left: 102%;
+          top:0%;
           padding: .5rem;
-          text-align: justify;
-          @media screen and (min-width: 660px){
-            width: 50%;
+          transition: all .6s;
+
+            &.current-content{
+              left: 0%;
+            }
+
+            &.before{
+              left: -102%
+            }
             
-            &:first-of-type{
-              border-right: dashed 1px $my-slider-color;
+            h5{
+              width: 100%;
+              text-align: right;
+              border-bottom: 2px solid $my-slider-color;
+              display: block;
+              margin-bottom: 0px;
+              font-size: 1.33rem;
+            }
+
+            p {
+              padding: .5rem;
+              text-align: justify;
+              @media screen and (min-width: 660px){
+                width: 50%;
+                
+                &:first-of-type{
+                  border-right: dashed 1px $my-slider-color;
+                }
+              }
             }
           }
-        }
       }
     }
 
-
-  }
-
-  .bottom-slider-container{
-    ul{
-      border-top: 2px solid $my-slider-color;
-      
-      li{
-        display: inline-block;
-        width: 20%;
-        margin: 0;
-        text-align: center;
-
-        &:nth-child(1n+2){
-          border-left: 2px solid $my-slider-color;
-        }
+    .bottom-slider-container{
+      ul{
+        border-top: 2px solid $my-slider-color;
         
-        a{
-          display: block;
-        }
+        li{
+          display: inline-block;
+          width: 20%;
+          margin: 0;
+          text-align: center;
+          cursor: pointer;
+
+          &.current-slide{
+            background: #eee;
+          }
+
+          &:nth-child(1n+2){
+            border-left: 2px solid $my-slider-color;
+          }
+             }
       }
     }
+    
   }
-  
-}

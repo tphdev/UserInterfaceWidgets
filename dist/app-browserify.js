@@ -1153,8 +1153,8 @@ window.onload = app;
 
         events: {
             "click .modal-btn": "overlayHandler",
-            "click .tab": "tabHandler"
-
+            "click .tab": "tabHandler",
+            "click .slide-btn": "slideHandler"
         },
 
         overlayHandler: function overlayHandler(evt) {
@@ -1184,6 +1184,26 @@ window.onload = app;
             console.log(selectedIndex + 1);
             $selectedTarget.addClass("selected-tab");
             $(".tabs-content > article:nth-of-type(" + selectedIndex + ")").addClass("selected-article");
+        },
+
+        slideHandler: function slideHandler(evt) {
+            var $selectedSlide = $(evt.target).closest("li"),
+                eventIndex = $selectedSlide.index() + 1;
+
+            console.log($selectedSlide);
+            $(".current-slide").removeClass("current-slide");
+            $(".current-content").removeClass("current-content");
+            $selectedSlide.addClass("current-slide");
+            $("ul > li:nth-of-type(" + eventIndex + ")").addClass("current-content");
+            $(".top-slider-container").scrollTop(0);
+
+            $("li.content-slide").each(function (index, value) {
+                if (index + 1 > eventIndex) {
+                    $(this).addClass("before");
+                } else {
+                    $(this).removeClass("before");
+                }
+            });
         }
 
     });

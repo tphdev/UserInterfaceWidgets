@@ -2,8 +2,7 @@
 @import "../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss";
 @import "../bower_components/bitters/app/assets/stylesheets/_base.scss";
 @import "../bower_components/neat/app/assets/stylesheets/_neat.scss";
-
-@import "./typescale.scss";
+@import "../bower_components/font-awesome/scss/font-awesome.scss";
 @import "./mixins.scss";
 
 $my-dark-purple: rgba(66,46,74,1);
@@ -104,7 +103,36 @@ body {
     transition: opacity .25s ease;
 }
 
-@import "./typescale.scss";
+//Typography Header Size
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: modular-scale(6 - $i);
+  }
+}
+
+//ThemeHeader
+header.theme-header{
+      color: white;
+      background-color: #333;
+      margin: auto;
+      padding: 2.5em;
+      text-align: center;
+
+        h1 {
+          font-weight: 200;
+          margin-bottom: .25rem;
+        }
+
+        p {
+          text-align: right;
+          font-weight: 200;
+          margin: 0 auto 3em auto; 
+
+          @include media($large-screen) {
+            max-width: 50%;
+          }
+        }
+  }
 @import "imports/_homepage.scss";
 @import "imports/_odyssey.scss";
 @import "imports/_menus-and-modals.scss";
