@@ -97,7 +97,9 @@
         events: {
             'click .modal-btn': 'overlayHandler',
             'click .tab': 'tabHandler',
-            'click .slide-btn': 'slideHandler'
+            'click .slide-btn': 'slideHandler',
+            'click .visible-content': 'accordionHandler',
+            'mouseenter .top':'tooltipper'
         },
 
         overlayHandler: function(evt){
@@ -146,7 +148,19 @@
                 if(index+1 > eventIndex){$(this).addClass('before')}
                     else{$(this).removeClass('before')}
             })
+        },
+
+        accordionHandler: function(evt){
+            $('.collapsible-content').slideToggle('extended');
+        },
+
+        tooltipper: function(evt){
+            console.log(evt)
+            $(evt.target).append(toolTip)
+
         }
+
+
 
 
 

@@ -1154,7 +1154,9 @@ window.onload = app;
         events: {
             "click .modal-btn": "overlayHandler",
             "click .tab": "tabHandler",
-            "click .slide-btn": "slideHandler"
+            "click .slide-btn": "slideHandler",
+            "click .visible-content": "accordionHandler",
+            "mouseenter .top": "tooltipper"
         },
 
         overlayHandler: function overlayHandler(evt) {
@@ -1204,6 +1206,15 @@ window.onload = app;
                     $(this).removeClass("before");
                 }
             });
+        },
+
+        accordionHandler: function accordionHandler(evt) {
+            $(".collapsible-content").slideToggle("extended");
+        },
+
+        tooltipper: function tooltipper(evt) {
+            console.log(evt);
+            $(evt.target).append(toolTip);
         }
 
     });

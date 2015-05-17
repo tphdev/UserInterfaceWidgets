@@ -84,6 +84,7 @@ main#details{
       padding: 1rem;
       color: #fff;
       text-shadow: 1px 1px #555;
+      font-weight: 200;
     }
 
     button{
@@ -215,7 +216,7 @@ main#details{
       }
     }   
     
-    &.accordion{
+    &.collapsible{
       $section-color: $my-green;
       background: #fff;
       border: 3px solid $section-color;
@@ -230,13 +231,14 @@ main#details{
       $section-color: $my-orange;
       background: #fff;
       border: 3px solid $section-color;
+
       
       h4 {
         background: $section-color;
         text-shadow: 1px 1px #555;
       }
 
-      p{
+      div.tip-box{
         position: relative;
         width: 100%;
         color: transparentize(#fff,0);
@@ -394,10 +396,6 @@ $mdl-txt-shadow: 1px 1px #555;
 
 .content-slider {
 
-  *{
-    outline: rgba(84,111,49,.23) 1px solid;
-  }
-
   $my-slider-color: navy;
   color: $my-slider-color;
   
@@ -473,12 +471,14 @@ $mdl-txt-shadow: 1px 1px #555;
       ul{
         border-top: 2px solid $my-slider-color;
         
-        li{
+        li.slide-btn{
           display: inline-block;
+          padding: .5rem;
           width: 20%;
           margin: 0;
           text-align: center;
           cursor: pointer;
+
 
           &.current-slide{
             background: #eee;
@@ -492,3 +492,74 @@ $mdl-txt-shadow: 1px 1px #555;
     }
     
   }
+
+.accordion {
+
+  .visible-content{
+    font-size: 1.25em; 
+    background: #eee;
+    cursor: pointer;
+    margin: 0;
+    padding: .25rem;
+  }
+
+  .collapsible-content{
+    display: none;
+    background-color: $my-light-purple;
+  }
+
+ 
+}
+
+.outer-tip{ 
+  .tool-tip{
+      $inner-color: $my-light-red;
+      $border-color: #333;
+      $arrow-size: 8px;
+      $border-width: 3px;
+
+      font-size: 16px;
+      line-height: 1em;
+      position: absolute;
+      top:102%;
+      left: -110%;
+      padding: 1rem;
+      margin: 0;
+      border: $border-width #333 solid;
+      background: $inner-color;
+      color: #333;
+      width: 10rem;
+      display: none;
+
+      &:after, &:before {
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+
+      &:after {
+        border-color: rgba(0,0,0,0);
+        border-bottom-color: $inner-color;
+        border-width: $arrow-size;
+        margin-left: -($arrow-size);
+      }
+      &:before {
+        border-color: rgba(0,0,0,0);
+        border-bottom-color: $border-color;
+        border-width: $arrow-size + $border-width + 1px;
+        margin-left: -($arrow-size) - $border-width - 1px;
+      }
+  }
+
+  &:hover{
+    .tool-tip {
+      display: block;
+    }
+  }
+}
+
