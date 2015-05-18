@@ -90,15 +90,16 @@
         view: 'menus',
 
         events: {
-            'click .side-menu-btn' : 'showSideMenu',
+            'click .menu-btn' : 'showSideMenu',
         },
 
         showSideMenu: function(evt){
-            console.log('showSideMenu')
-            var $sideMenu = $('.side-menu')
+            var menuTypeJQ = '.'+$(evt.target).attr('data-menuType')
+            
+            var $sideMenu = $(menuTypeJQ);
             var $divOverlay = $('.nav-screen-overlay');
 
-            $('.side-menu').addClass('extended');
+            $(menuTypeJQ).addClass('extended');
             $divOverlay.addClass('show');
 
             $divOverlay.on('click', function(){

@@ -12,6 +12,9 @@ main#wrapper-m-and-m{
     color: white;
     padding: 1.0rem .25rem;
     height: 100vh;
+    
+    $sct-bd-width: 5px;
+
     @include row(table);
     @include media($medium-screen){
         @include span-columns(6);
@@ -28,12 +31,17 @@ main#wrapper-m-and-m{
       margin: .3rem;
     }
 
+    p{
+      color: #333;
+    }
+
     button{
       border: 1px $white-translucent solid;
     }
 
     &.navigation-menus{
-      background: $my-light-blue;
+      background: #fff;
+      border: $my-blue $sct-bd-width solid;
       h3{
         background: $my-blue;
         @include row()
@@ -50,7 +58,7 @@ main#wrapper-m-and-m{
       } 
 
       .buttons-list{
-        border-left: 1px solid #fff;
+        border-left: 1px solid #333;
         padding-left: .5rem;
         text-align: left;
         @include span-columns(6);
@@ -58,8 +66,9 @@ main#wrapper-m-and-m{
     }
 
     &.dropdown-menus{
-      background: $my-blue;
-      
+      border: $my-light-blue $sct-bd-width solid;
+      background: #fff;
+
       h3{
         background: $my-light-blue;
         text-shadow: 1px 1px #555;
@@ -78,7 +87,7 @@ main#wrapper-m-and-m{
       }
       
       .description{
-        border-left: 1px solid #fff;
+        border-left: 1px solid #333;
         padding-left: .5rem;
         @include span-columns(6); 
       }
@@ -87,6 +96,7 @@ main#wrapper-m-and-m{
 }
 
 
+//Universal Overlay
 .nav-screen-overlay{
   position: fixed;
   top: 0;
@@ -104,6 +114,9 @@ main#wrapper-m-and-m{
   }
 }
 
+//-----------------
+// Side-Menu Popout
+//-----------------
 nav.side-menu{
   color: #fff;
   position: fixed;
@@ -149,3 +162,89 @@ nav.side-menu{
     display: block
   }
 }
+
+//-----------------
+// Top-Menu Popout
+//-----------------
+nav.top-menu{
+  
+  $backgroundColor: transparentize($my-red,.2);
+  color: #fff;
+  position: fixed;
+  top: -100%;
+  left: 0%;
+  
+  height: 150px;
+  width: 100%;
+  background: $backgroundColor;
+  transition: all .3s;
+  z-index: 1230;
+  transition: all .3s;
+
+  &.extended{
+    top: 0%;
+  } 
+
+  h3 {
+    padding: 1rem;
+  }
+
+  hr {
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  ul.main-menu{
+    font-size: 0;
+
+    li{
+    font-size: medium;
+
+    padding: .75rem .5rem;
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+    font-weight: 600;
+    transition: all .1s;
+
+
+
+      &.sub-menu{
+        position: relative;
+      }
+
+      &:hover{
+        border-bottom: 6px solid #eee;
+        cursor: pointer;
+      }
+    }
+  }  
+
+  ul.sub-list{
+    display:none;
+    position: absolute;
+    top:101%;
+    left: 0;
+    background: $backgroundColor;
+    width: 100%;
+
+    li {
+      display: block;
+      width: 100%;
+      text-align: left;
+      &:hover{
+        border-left: 6px solid #eee;
+        border-bottom: none;
+      }
+    }
+
+  }
+
+  .sub-menu:hover > .sub-list{
+    display: block
+  }
+}
+
+//-----------------
+// Top-Menu Popout
+//-----------------
