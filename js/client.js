@@ -90,24 +90,31 @@
         view: 'menus',
 
         events: {
-            'click .menu-btn' : 'showSideMenu',
+            'click .menu-btn' : 'showMenu',
         },
 
-        showSideMenu: function(evt){
-            var menuTypeJQ = '.'+$(evt.target).attr('data-menuType')
+        showMenu: function(evt){
+            var menuTypeJQ = $(evt.target).attr('data-menuType')
             
-            var $sideMenu = $(menuTypeJQ);
+            var $sideMenu = $('.'+ menuTypeJQ);
             var $divOverlay = $('.nav-screen-overlay');
 
-            $(menuTypeJQ).addClass('extended');
+            $('.'+ menuTypeJQ).addClass('extended');
             $divOverlay.addClass('show');
 
             $divOverlay.on('click', function(){
                 $(this).removeClass('show');
                 $sideMenu.removeClass('extended')
             });
-        }
 
+            if(menuTypeJQ==='push-menu'){
+                var $body = $(document.body)
+                $body.addClass('push-menu')
+                $divOverlay.on('click', function(){
+                    $body.removeClass('push-menu')
+                })
+            }
+           }
     })
 
     Backbone.DetailsView = MyViewConstructor.TemplateView.extend({
