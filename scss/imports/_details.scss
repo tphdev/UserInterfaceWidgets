@@ -78,6 +78,7 @@ main#details{
   section{
     color: $my-dark-purple;
     padding: 1.0rem;
+    $sct-bd-width: 5px;
 
     h4{
       text-align: center;
@@ -95,7 +96,7 @@ main#details{
     &.modals {
       $section-color: $my-blue;
       background: #fff;
-      border: 3px solid $section-color;
+      border: $sct-bd-width solid $section-color;
 
       h4{
         background: $section-color;
@@ -124,7 +125,7 @@ main#details{
     &.tabs {
         $section-color: $my-purple;
         background: #fff;
-        border: 3px solid $section-color;
+        border: $sct-bd-width solid $section-color;
 
         h4 {
           text-shadow: 1px 1px #555;
@@ -144,9 +145,9 @@ main#details{
         .buttons-list {
           border-left: 1px solid #fff;
           padding-left: .5rem;
-        text-align: left;
-        @include span-columns(6);
-        @include omega();
+          text-align: left;
+          @include span-columns(6);
+          @include omega();
         }
         
         .tabs-module{
@@ -208,8 +209,8 @@ main#details{
     &.content-slideshow {
         $section-color: $my-red;
         background: #fff;
-        border: 3px solid $section-color;
-      
+        border: $sct-bd-width solid $section-color;
+        
       h4 {
         background: $section-color;
         width: 100%;
@@ -219,7 +220,7 @@ main#details{
     &.collapsible{
       $section-color: $my-green;
       background: #fff;
-      border: 3px solid $section-color;
+      border: $sct-bd-width solid $section-color;
       
       h4 {
         background: $section-color;
@@ -230,7 +231,7 @@ main#details{
     &.tool-tips{
       $section-color: $my-orange;
       background: #fff;
-      border: 3px solid $section-color;
+      border: $sct-bd-width solid $section-color;
 
       
       h4 {
@@ -395,11 +396,13 @@ $mdl-txt-shadow: 1px 1px #555;
 
 
 .content-slider {
-
+  
   $my-slider-color: navy;
+  $height-sm: 11rem;
+  $height-lg: 15rem;
   color: $my-slider-color;
   
-  background: white;
+  background: #eee;
   border: 2px solid $my-slider-color;
   
   .line-up-blocks{
@@ -416,9 +419,13 @@ $mdl-txt-shadow: 1px 1px #555;
     position: relative;
     width: 100%;  
     display: block;
-    height: 10rem;
+    height: 11rem;
     overflow-y: scroll;
     overflow-x: hidden;
+
+    @media screen and (min-width: 660px){
+        height: 15rem;
+    }
 
     .copy-area{
       position: relative;
@@ -430,7 +437,7 @@ $mdl-txt-shadow: 1px 1px #555;
           position: absolute;
           width: 100%; 
           display: block;
-          left: 102%;
+          left: -102%;
           top:0%;
           padding: .5rem;
           transition: all .6s;
@@ -439,8 +446,8 @@ $mdl-txt-shadow: 1px 1px #555;
               left: 0%;
             }
 
-            &.before{
-              left: -102%
+            &.after{
+              left: 102%
             }
             
             h5{
@@ -481,7 +488,7 @@ $mdl-txt-shadow: 1px 1px #555;
 
 
           &.current-slide{
-            background: #eee;
+            background: $my-yellow;
           }
 
           &:nth-child(1n+2){
@@ -495,21 +502,33 @@ $mdl-txt-shadow: 1px 1px #555;
 
 .accordion {
 
-  .visible-content{
+  .toggle-content{
     font-size: 1.25em; 
     background: #eee;
     cursor: pointer;
     margin: 0;
     padding: .25rem;
+
+
   }
 
   .collapsible-content{
     display: none;
     background-color: $my-light-purple;
+    padding: 1rem;
+    color: #fff;
   }
 
  
 }
+
+
+
+// -----------------------------
+// -----------------------------
+// -------- Outer Slider ------------
+// -----------------------------
+// -----------------------------
 
 .outer-tip{ 
   .tool-tip{
@@ -517,44 +536,134 @@ $mdl-txt-shadow: 1px 1px #555;
       $border-color: #333;
       $arrow-size: 8px;
       $border-width: 3px;
+      $font-color: #fff;
 
       font-size: 16px;
       line-height: 1em;
       position: absolute;
-      top:102%;
-      left: -110%;
       padding: 1rem;
       margin: 0;
       border: $border-width #333 solid;
       background: $inner-color;
-      color: #333;
+      color: $font-color;
       width: 10rem;
       display: none;
 
-      &:after, &:before {
-        bottom: 100%;
-        left: 50%;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-      }
 
-      &:after {
-        border-color: rgba(0,0,0,0);
-        border-bottom-color: $inner-color;
-        border-width: $arrow-size;
-        margin-left: -($arrow-size);
+
+        &:after, &:before {
+          border: solid transparent;
+          content: " ";
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+          border-color: rgba(0,0,0,0);
+        }
+ 
+        &:after{
+          border-width: $arrow-size;
+        }
+
+        &:before{
+          border-width: $arrow-size + $border-width + 1px;
+
+        }
+        
+        // Styles for tooltip that hovers below with arrow on TOP
+
+
+        &.top-arrow{
+           top:102%;
+          left: -110%;
+        }
+        
+        &.top-arrow:after {
+          border-bottom-color: $inner-color;
+          margin-left: -($arrow-size);
+        }
+        &.top-arrow:before {
+          border-bottom-color: $border-color;
+          margin-left: -($arrow-size) - $border-width - 1px;
+        }
+        
+        &.top-arrow:after, 
+        &.top-arrow:before {
+          bottom: 100%;
+          left: 50%;
+        }
+
+        // Styles for tooltip that hovers above with arrow on BOTTOM: ;
+
+        &.bottom-arrow{
+           bottom:102%;
+            left: -110%;
+        }
+
+        &.bottom-arrow:after {
+          border-top-color: $inner-color;
+          margin-left: -($arrow-size);
+        }
+        &.bottom-arrow:before {
+          border-top-color: $border-color;
+          margin-left: -($arrow-size) - $border-width - 1px;
+        }
+
+        &.bottom-arrow:after, 
+        &.bottom-arrow:before {
+          top: 100%;
+          left: 50%;
+        }
+        
+        // Styles for tooltip that hovers to the right w/ the  arrow on the LEFT: ;
+
+        &.left-arrow{
+           left: 105%;
+           top: -20%;
+        }
+
+        &.left-arrow:after {
+          border-right-color: $inner-color;
+          margin-top: -($arrow-size);
+        }
+        &.left-arrow:before {
+          border-right-color: $border-color;
+          margin-top: -($arrow-size) - $border-width - 1px;
+        }
+
+        &.left-arrow:after, 
+        &.left-arrow:before {
+          top: 50%;
+          right: 100%;
+        }
+
+        //
+        
+        &.right-arrow{
+           right:105%;
+           top: -20%;
+        }
+
+        &.right-arrow:after {
+          border-left-color: $inner-color;
+          margin-top: -($arrow-size);
+        }
+        &.right-arrow:before {
+          border-left-color: $border-color;
+          margin-top: -($arrow-size) - $border-width - 1px;
+        }
+
+
+        &.right-arrow:after, 
+        &.right-arrow:before {
+          top: 50%;
+          left: 100%;
+        }
+
+        
+
+
       }
-      &:before {
-        border-color: rgba(0,0,0,0);
-        border-bottom-color: $border-color;
-        border-width: $arrow-size + $border-width + 1px;
-        margin-left: -($arrow-size) - $border-width - 1px;
-      }
-  }
 
   &:hover{
     .tool-tip {

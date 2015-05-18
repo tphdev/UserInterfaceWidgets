@@ -1144,7 +1144,25 @@ window.onload = app;
 
     Backbone.MenusAndModalsView = MyViewConstructor.TemplateView.extend({
         el: ".wrapper",
-        view: "menus-and-modals"
+        view: "menus",
+
+        events: {
+            "click .side-menu-btn": "showSideMenu" },
+
+        showSideMenu: function showSideMenu(evt) {
+            console.log("showSideMenu");
+            var $sideMenu = $(".side-menu");
+            var $divOverlay = $(".nav-screen-overlay");
+
+            $(".side-menu").addClass("extended");
+            $divOverlay.addClass("show");
+
+            $divOverlay.on("click", function () {
+                $(this).removeClass("show");
+                $sideMenu.removeClass("extended");
+            });
+        }
+
     });
 
     Backbone.DetailsView = MyViewConstructor.TemplateView.extend({
@@ -1155,9 +1173,7 @@ window.onload = app;
             "click .modal-btn": "overlayHandler",
             "click .tab": "tabHandler",
             "click .slide-btn": "slideHandler",
-            "click .visible-content": "accordionHandler",
-            "mouseenter .top": "tooltipper"
-        },
+            "click .toggle-content": "accordionHandler" },
 
         overlayHandler: function overlayHandler(evt) {
             console.log(".content-slider Found...");
@@ -1201,23 +1217,25 @@ window.onload = app;
 
             $("li.content-slide").each(function (index, value) {
                 if (index + 1 > eventIndex) {
-                    $(this).addClass("before");
+                    $(this).addClass("after");
                 } else {
-                    $(this).removeClass("before");
+                    $(this).removeClass("after");
                 }
             });
         },
 
         accordionHandler: function accordionHandler(evt) {
-            $(".collapsible-content").slideToggle("extended");
-        },
+            var $collapsibleContent = $(".collapsible-content");
 
-        tooltipper: function tooltipper(evt) {
-            console.log(evt);
-            $(evt.target).append(toolTip);
-        }
+            $collapsibleContent.slideToggle().toggleClass("extended");
 
-    });
+            if ($collapsibleContent.hasClass("extended")) {
+                $(".toggle-content span").text("-");
+                console.log("has extended");
+            } else {
+                $(".toggle-content span").text("+");
+            }
+        } });
 
     exports.AppRouter = Backbone.AppRouter;
 })(typeof module === "object" ? module.exports : window);

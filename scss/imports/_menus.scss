@@ -32,14 +32,15 @@ main#wrapper-m-and-m{
       border: 1px $white-translucent solid;
     }
 
-    &.menus{
+    &.navigation-menus{
       background: $my-light-blue;
       h3{
         background: $my-blue;
+        @include row()
       }
 
       button{
-        background-color: $my-dark-orange;
+        background-color: $my-red;
       }
 
       .description{
@@ -56,7 +57,7 @@ main#wrapper-m-and-m{
       }
     }
 
-    &.modals{
+    &.dropdown-menus{
       background: $my-blue;
       
       h3{
@@ -72,6 +73,8 @@ main#wrapper-m-and-m{
         padding-right: .5rem;
         text-align: right;
         @include span-columns(6);
+
+        button{text-align: right;}
       }
       
       .description{
@@ -80,5 +83,69 @@ main#wrapper-m-and-m{
         @include span-columns(6); 
       }
     }
+  }
+}
+
+
+.nav-screen-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 100%;
+  width:100%;
+  opacity: 0;
+  background: rgba(100,100,100,.80);
+  transition: all .3s;
+
+  &.show{
+    z-index: 1000;
+    opacity: 1.0;
+  }
+}
+
+nav.side-menu{
+  color: #fff;
+  position: fixed;
+  top: 0%;
+  left: -100%;
+  
+  height: 100%;
+  width: 250px;
+  background: transparentize($my-red,.2);
+  transition: all .3s;
+  z-index: 1230;
+  transition: all .3s;
+
+  &.extended{
+    left: 0%;
+  } 
+
+  h3 {
+    padding: 1rem;
+  }
+
+  hr {
+    margin: 0 auto;
+    width: 80%;
+ }
+
+  li{
+    padding: .75rem .5rem;
+    font-weight: 600;
+    transition: all .1s;
+
+    &:hover{
+      border-left: 6px solid #eee;
+      cursor: pointer;
+    }
+  }
+
+  .sub-list{
+    display:none
+  }
+
+  .sub-menu:hover > .sub-list{
+    display: block
   }
 }

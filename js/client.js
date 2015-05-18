@@ -87,7 +87,26 @@
 
     Backbone.MenusAndModalsView = MyViewConstructor.TemplateView.extend({
         el: ".wrapper",
-        view: 'menus-and-modals'
+        view: 'menus',
+
+        events: {
+            'click .side-menu-btn' : 'showSideMenu',
+        },
+
+        showSideMenu: function(evt){
+            console.log('showSideMenu')
+            var $sideMenu = $('.side-menu')
+            var $divOverlay = $('.nav-screen-overlay');
+
+            $('.side-menu').addClass('extended');
+            $divOverlay.addClass('show');
+
+            $divOverlay.on('click', function(){
+                $(this).removeClass('show');
+                $sideMenu.removeClass('extended')
+            });
+        }
+
     })
 
     Backbone.DetailsView = MyViewConstructor.TemplateView.extend({
@@ -98,8 +117,7 @@
             'click .modal-btn': 'overlayHandler',
             'click .tab': 'tabHandler',
             'click .slide-btn': 'slideHandler',
-            'click .visible-content': 'accordionHandler',
-            'mouseenter .top':'tooltipper'
+            'click .toggle-content': 'accordionHandler',
         },
 
         overlayHandler: function(evt){
@@ -145,28 +163,23 @@
             $('.top-slider-container').scrollTop(0)
 
             $('li.content-slide').each(function(index,value){
-                if(index+1 > eventIndex){$(this).addClass('before')}
-                    else{$(this).removeClass('before')}
+                if(index+1 > eventIndex){$(this).addClass('after')}
+                    else{$(this).removeClass('after')}
             })
         },
 
         accordionHandler: function(evt){
-            $('.collapsible-content').slideToggle('extended');
+            var $collapsibleContent = $('.collapsible-content')
+
+            $collapsibleContent.slideToggle().toggleClass('extended')
+
+            if( $collapsibleContent.hasClass('extended')){
+                $('.toggle-content span').text('-');
+                console.log('has extended')
+            } else {
+                $('.toggle-content span').text('+');
+            }
         },
-
-        tooltipper: function(evt){
-            console.log(evt)
-            $(evt.target).append(toolTip)
-
-        }
-
-
-
-
-
-
-
-
     })
 
     exports.AppRouter = Backbone.AppRouter
