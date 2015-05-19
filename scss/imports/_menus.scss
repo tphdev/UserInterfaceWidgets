@@ -1,5 +1,4 @@
 main#wrapper-m-and-m{ 
-  background: $my-light-blue;
   @include outer-container(100%);
     
   header.theme-header{
@@ -23,6 +22,7 @@ main#wrapper-m-and-m{
     h3{
       text-align: center;
       padding: 1rem;
+      font-weight: 200;
     }
 
     li{
@@ -62,8 +62,21 @@ main#wrapper-m-and-m{
             }
 
             button[data-menuType='push-menu']{
-              background-color: $my-purple
+              background-color: $my-purple;
             }
+
+            button.menu-btn-scroll{
+              background-color: $my-yellow;
+            }
+
+            button.menu-btn-icon-panel{
+                background: $my-orange;
+            }
+
+            button.menu-btn-icon-panel{
+                background: $my-green;
+            }
+
 
 
       }
@@ -76,6 +89,7 @@ main#wrapper-m-and-m{
       h3{
         background: $my-light-blue;
         text-shadow: 1px 1px #555;
+
       }
 
       button{
@@ -99,6 +113,10 @@ main#wrapper-m-and-m{
   }
 }
 
+aside{
+  background: $my-light-yellow;
+  display:none
+}
 
 //Universal Overlay
 .nav-screen-overlay{
@@ -148,7 +166,7 @@ nav.side-menu{
  }
 
   li{
-    padding: .75rem .5rem;
+    padding: .75rem 1.25rem;
     font-weight: 600;
     transition: all .1s;
 
@@ -256,6 +274,7 @@ body.push-menu{
   right: 250px;
 }
 
+
 nav.push-menu{
   color: #fff;
   position: fixed;
@@ -265,7 +284,6 @@ nav.push-menu{
   height: 100%;
   width: 250px;
   background: transparentize($my-purple,.2);
-  transition: all .3s;
   z-index: 1230;
   transition: all .3s;
 
@@ -300,4 +318,120 @@ nav.push-menu{
   .sub-menu:hover > .sub-list{
     display: block
   }
+}
+
+//-------------
+// Nav-page popout
+//-------------
+nav.scroll-menu{
+    $background-color: $my-yellow;
+
+    position: fixed;
+    top: 0%;
+    right: -100%;
+    width: 150px;
+    height: 150px;
+    transition: all .45s;
+
+    h5{
+      margin-bottom: 0;
+      color: #fff;
+      padding: .25rem .5rem;
+      background: #333; 
+
+    }
+    
+    &.extended{
+      right: 0;
+    }
+    
+    ul{
+      background: $background-color; 
+
+      li{
+        padding: 0 1.0rem;
+        a {
+          display: block;
+          color: #fff;    
+          &:hover{
+            color: $my-light-blue;
+            background: #eee;
+          }
+        }
+      }
+    }
+
+    .close-scroll{
+      border: 2px solid rgba(50,50,50,.8);
+      display: table-cell;
+      width: .5rem;
+      padding: .5rem;
+      background: #eee;
+      text-align: center;
+      vertical-align: center;
+      cursor: pointer;
+
+      &:hover{
+        color: white;
+        background: #932;
+      }
+    }
+}
+
+//-------------
+// Nav-page popoutk
+//-------------
+nav.icon-panel{
+  $borderColor: #fff;
+  $pullDown: $my-green;
+  $dominantBg: #999;
+  $fontColor: #fff;
+
+  position: fixed;
+  top: -195px;
+  left: 0;
+  width: 50px;
+  height: 300px;
+
+  color: $fontColor;
+  font-size: 2.0rem;
+
+  transition: all .3s;
+
+  &.extended{
+    top: 0px;
+  }
+ 
+  ul.icon-menu{
+    margin: 0;
+    text-align: center;
+    background: $dominantBg;
+    border: 2px solid $borderColor;
+
+    li:hover{
+      cursor: pointer;
+      color: transparentize($fontColor,.5);
+    }
+
+  }
+
+  span.pull-tab{
+    display: block; 
+    text-align: center;
+    border-top: 2px $borderColor solid;
+    line-height: 40px;
+    
+    background: $pullDown;
+    border-left: 2px solid $borderColor;
+    border-right: 2px solid $borderColor;
+    border-bottom: 2px solid $borderColor;
+
+    border-radius: 0px 0px 20px 20px;
+    
+    cursor: pointer;
+    transition: all .3s;
+  }
+  span.pull-tab:hover {
+      background: $my-light-green;
+    }  
 }

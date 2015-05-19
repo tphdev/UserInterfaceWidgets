@@ -8,9 +8,6 @@
 
     Backbone.$ = $,
 
-
-
-
     Backbone.AppRouter = Backbone.Router.extend({
         initialize: function(){
             console.log('router initialized');
@@ -91,6 +88,8 @@
 
         events: {
             'click .menu-btn' : 'showMenu',
+            'click .menu-btn-scroll': 'showScroll',
+            'click .pull-icons': 'showIcons'
         },
 
         showMenu: function(evt){
@@ -114,7 +113,43 @@
                     $body.removeClass('push-menu')
                 })
             }
-           }
+
+        },
+
+        showScroll: function(evt){
+            var $scrollMenu = $('.scroll-menu'),
+                $aside = $('aside.dummy-content')
+            
+            $scrollMenu.addClass('extended');
+            $('aside').show();
+
+            $scrollMenu.find('li a').on('click',function(evt){
+                evt.preventDefault();
+                var anchorName = ($(evt.target).attr('href')).substr(1)
+                var domElPosition = $('a[name="'+anchorName+'"]').position();
+                $('html, body').animate({
+                    scrollTop: domElPosition.top
+                })
+
+            })
+
+            $('.close-scroll').on('click',function(){
+                $scrollMenu.removeClass('extended')
+                if($aside){$aside.hide()}
+            })
+        },
+
+        showIcons: function(evt){
+            var $iconPanel = $('.icon-panel'),
+            $pullIcons = $('.pull-icons');
+
+            console.log('hey')
+            $iconPanel.toggleClass('extended');
+
+        }
+
+
+    
     })
 
     Backbone.DetailsView = MyViewConstructor.TemplateView.extend({

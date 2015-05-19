@@ -16,10 +16,11 @@ $my-green: rgba(72,160,82,1);
 $my-light-green: rgba(99,219,140,1);
 $my-dark-orange: rgba(107,67,1,1);
 $my-light-orange: rgba(255,169,70,1);
-$my-orange: rgba(189,119,8,1);
+$my-orange: rgba(212,103,2,1);
 $my-light-red: rgba(210,110,99,1);
 $my-red: rgba(190,66,64,1);
 $my-yellow: rgba(189,167,8,1);
+$my-light-yellow: rgba(225,225,163,1);
 $my-aqua: rgba(29,193,192,1);
 $my-pink: rgba(255,148,192,1);
 $font-black: #333;
@@ -101,6 +102,8 @@ img {max-width:100%;}
 
 body {
     transition: opacity .25s ease;
+    
+    //for push menu
     position: relative;
     right: 0;
     top:0;
@@ -137,6 +140,7 @@ header.theme-header{
           }
         }
   }
+
 @import "imports/_homepage.scss";
 @import "imports/_odyssey.scss";
 @import "imports/_menus.scss";
