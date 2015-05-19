@@ -19,6 +19,7 @@ $my-light-orange: rgba(255,169,70,1);
 $my-orange: rgba(212,103,2,1);
 $my-light-red: rgba(210,110,99,1);
 $my-red: rgba(190,66,64,1);
+$my-dark-red: rgba(117,41,40,1);
 $my-yellow: rgba(189,167,8,1);
 $my-light-yellow: rgba(225,225,163,1);
 $my-aqua: rgba(29,193,192,1);
@@ -38,28 +39,7 @@ $white-translucent: rgba(255,255,255,.7);
  * GRIDS
  */
 
-.grid {
-    width: 100%;
-    display: block;
-    font-size: 0;
-    text-align: justify;
-    position: relative;
 
-    & > * {
-        font-size: medium;
-        text-align: left;
-        display: inline-block;
-        width: 100%;
-        vertical-align: top;
-    }
-
-    &:after {
-        display: inline-block;
-        width: 100%;
-        content: "";
-        font-size: medium;
-    }
-}
 
 @include gridify(2, 400);
 @include gridify(3, 600);

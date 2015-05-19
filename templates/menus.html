@@ -85,7 +85,7 @@
 	</nav>
 
 	<header class="theme-header">
-			<h1>Menus &amp; Modal Window Effects</h1>
+			<h1>Menu Components</h1>
 			<p>Animations using <strong>CSS</strong> transitions. <em>Event-handling</em> with <span>jQuery.</span></p>	
 	</header>
 	
@@ -96,8 +96,8 @@
 		</div>
 		<div class='buttons-list'>
 			<ul>
-				<li><button class='menu-btn' data-menuType="top-menu">Drop-Down</button></li>
-				<li><button class='menu-btn' data-menuType="side-menu">Left-Side</button></li>
+				<li><button class='menu-btn' data-menuType="top-menu">Pop-Down</button></li>
+				<li><button class='menu-btn' data-menuType="side-menu">Pop-In</button></li>
 				<li><button class='menu-btn'  data-menuType="push-menu">Push-Out</button></li>
 				<li><button class='menu-btn-scroll'>Animated Scroll</button></li>
 				<li><button class="menu-btn-icon-panel pull-icons">Collapsible Icons</button></li>
@@ -105,18 +105,26 @@
 		</div>
 	</section>
 	
-	<section class='dropdown-menus'>
-		<h3>Dropdown Menus</h3>
-		<div class='buttons-list'>
-			<ul>
-				<li><button>Dropdown</button></li>
-				<li><button>Mega Menu</button></li>
-				<li><button>Filtered Menu</button></li>
+	<section class='in-page-menus'>
+		<h3>In-Page Menus</h3>
+		<p>
+			Not all content needs a major menu. Sometimes a simple dropdown will do.
+		</p>
+		<div class="dropdown">
+			<a class='dd-btn'>Dropdown <i class="fa fa-caret-down"></i></a>
+			<ul class='dd-list'>
+				<li>Head</li>
+				<li>Neck</li>
+				<li>Chest</li>
+				<li>Waist</li>
+				<li>Legs</li>
+				<li>Feet</li>
 			</ul>
 		</div>
-		<div class='description'>
-			<p>There are many ways for modal windows to appear. Avoid the javascript <code>alert()</code> and alert your users gracefully and appropriately with the right notification.</p>
-		</div>
+		<p> <br>
+			Howeversometimes a major menu is necessary. Especially if there are visuals and sub-options.
+		</p>
+		<button class='mega-btn'>Mega Menu <i class="fa fa-list-alt"></i></button>
 	</section>
 
 	<aside class="dummy-content">
@@ -156,5 +164,55 @@
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui distinctio soluta hic ducimus, omnis eligendi, reiciendis, quas explicabo quam quod itaque dolore ipsum autem. Vitae facere distinctio necessitatibus placeat cupiditate dignissimos dolorum alias perspiciatis saepe neque maiores rerum sapiente quam, tempore iusto et qui aspernatur, minus! Quaerat quod eum tenetur distinctio officia maiores, delectus ipsa eligendi ut doloremque cum nam quisquam reprehenderit laborum facere magni, praesentium commodi voluptate nostrum iusto nobis voluptas! Quis voluptatem, nostrum.</p>
 		</article>
 	</aside>
+
+	<div class="mega-menu">
+		<ul class="mm-grid main-list">
+			<li class="grid-item">
+				<div class="logo"><i class="fa fa-car"></i></div>
+				<h5>Cars</h5>
+				<ul class="mm-sublist">
+					<li>+ Toyota Prius</span></li>
+					<li>+ Honda Civic</span></li>
+					<li>+ Audi A4</span></li>
+					<li>+ Acura TL</span></li>
+				</ul>
+			</li>
+			<li class="grid-item">
+				<div class="logo"><i class="fa fa-truck"></i></div>
+				<h5>Trucks</h5>
+				<ul class="mm-sublist">
+					<li>+ Mac</li>
+					<li>+ Peterbilt</li>
+					<li>+ Ford F650</li>
+					<li>+ Leyland T45</li>
+				</ul>
+
+			</li>
+			<li class="grid-item">
+				<div class="logo"><i class="fa fa-motorcycle"></i></div>
+				<h5>Motorcycles</h5>
+				<ul class="mm-sublist">
+					<li>+ Ducati</li>
+					<li>+ Yamaha</li>
+					<li>+ Suzuki</li>
+					<li>+ Honda</li>
+				</ul>
+			</li>
+			<li class="grid-item">
+				<div class="logo"><i class="fa fa-bus"></i></div>
+				<h5>Vans</h5>
+				<ul class="mm-sublist">
+					<li>+ Chevrolet Express</li>
+					<li>+ Ford E Series</li>
+					<li>+ Mercedes Sprinter</li>
+					<li>+ Nissan NV</li>
+				</ul>
+			</li>
+		</ul>
+		
+		<p class='responsive'>reponsive<br>
+			<i class="fa fa-arrows-h"></i>
+		<p>
+	</div>
 
 </main>

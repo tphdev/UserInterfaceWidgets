@@ -13,7 +13,7 @@
             console.log('router initialized');
             this.homeView = new Backbone.HomeView();
             this.odysseyView = new Backbone.OdysseyView();
-            this.menusAndModalsView = new Backbone.MenusAndModalsView();
+            this.menusView = new Backbone.MenusView();
             this.detailsView = new Backbone.DetailsView();
             Backbone.history.start();
         },
@@ -37,7 +37,7 @@
 
         goMenusAndModals: function(){
             var self = this
-            this.menusAndModalsView.render();
+            this.menusView.render();
             window.scrollTo(0,0);
 
         },
@@ -82,14 +82,17 @@
         },
     });
 
-    Backbone.MenusAndModalsView = MyViewConstructor.TemplateView.extend({
+    Backbone.MenusView = MyViewConstructor.TemplateView.extend({
         el: ".wrapper",
         view: 'menus',
 
         events: {
             'click .menu-btn' : 'showMenu',
             'click .menu-btn-scroll': 'showScroll',
-            'click .pull-icons': 'showIcons'
+            'click .pull-icons': 'showIcons',
+            'click .dd-btn': 'showDropList',
+            'click .mega-btn': 'showMegaMenu'
+
         },
 
         showMenu: function(evt){
@@ -145,11 +148,22 @@
 
             console.log('hey')
             $iconPanel.toggleClass('extended');
+        },
 
-        }
+        showDropList: function(evt){
+            var $dropDownList = $('.dd-list');
+            $dropDownList.toggle();
+        },
 
+        showMegaMenu: function(evt){
+            var $megaMenu = $('.mega-menu')
+            var hidden;
+            $megaMenu.css('display') === 'none'? hidden=true : hidden=false;
+            $megaMenu.toggle()
+            
+            hidden === true ? $('html, body').scrollTop($(document).height()): hidden;
+        } 
 
-    
     })
 
     Backbone.DetailsView = MyViewConstructor.TemplateView.extend({
