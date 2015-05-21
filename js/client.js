@@ -15,10 +15,12 @@
             this.odysseyView = new Backbone.OdysseyView();
             this.menusView = new Backbone.MenusView();
             this.detailsView = new Backbone.DetailsView();
+            this.animationsView = new Backbone.LayoutsView();
             Backbone.history.start();
         },
 
         routes: {
+            "layouts": "goToLayouts",
             "details": "goToDetails",
             "menus-and-modals": "goMenusAndModals",
             "odyssey":"goNavExamples",
@@ -47,8 +49,10 @@
             if(window){window.scrollTo(0,0);}
 
             this.detailsView.render();
-            console.log('Element Not Found')
-            this.detailsView.overlay();
+        },
+
+        goToLayouts: function(){
+            this.animationsView.render();
         }
     });
 
@@ -133,7 +137,6 @@
                 $('html, body').animate({
                     scrollTop: domElPosition.top
                 })
-
             })
 
             $('.close-scroll').on('click',function(){
@@ -237,6 +240,11 @@
                 $('.toggle-content span').text('+');
             }
         },
+    })
+
+    Backbone.LayoutsView = MyViewConstructor.TemplateView.extend({
+        el: '.wrapper',
+        view: 'layouts'
     })
 
     exports.AppRouter = Backbone.AppRouter

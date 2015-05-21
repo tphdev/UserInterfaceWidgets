@@ -1,4 +1,23 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
+"use strict";
+// es6 polyfills, powered by babel
+require("babel/register");
+
+// other stuff that we don't really use in our own code
+var Pace = require("../bower_components/pace/pace.js");
+
+// require your own libraries, too!
+var client = require("./client.js");
+
+function app() {
+    document.querySelector("html").style.opacity = 1;
+    var startApp = new client.AppRouter();
+}
+
+window.onload = app;
+
+},{"../bower_components/pace/pace.js":2,"./client.js":4,"babel/register":9}],2:[function(require,module,exports){
 "use strict";
 
 (function () {
@@ -994,7 +1013,7 @@
   }
 }).call(undefined);
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 "use strict";
 
 ;(function (exports) {
@@ -1040,26 +1059,7 @@
     exports.TemplateView = TemplateView;
 })(typeof module === "object" ? module.exports : window);
 
-},{"backbone":10,"jquery":13,"lodash":14}],3:[function(require,module,exports){
-
-"use strict";
-// es6 polyfills, powered by babel
-require("babel/register");
-
-// other stuff that we don't really use in our own code
-var Pace = require("../bower_components/pace/pace.js");
-
-// require your own libraries, too!
-var client = require("./client.js");
-
-function app() {
-    document.querySelector("html").style.opacity = 1;
-    var startApp = new client.AppRouter();
-}
-
-window.onload = app;
-
-},{"../bower_components/pace/pace.js":1,"./client.js":4,"babel/register":9}],4:[function(require,module,exports){
+},{"backbone":10,"jquery":13,"lodash":14}],4:[function(require,module,exports){
 "use strict";
 
 ;(function (exports) {
@@ -1077,10 +1077,12 @@ window.onload = app;
             this.odysseyView = new Backbone.OdysseyView();
             this.menusView = new Backbone.MenusView();
             this.detailsView = new Backbone.DetailsView();
+            this.animationsView = new Backbone.LayoutsView();
             Backbone.history.start();
         },
 
         routes: {
+            layouts: "goToLayouts",
             details: "goToDetails",
             "menus-and-modals": "goMenusAndModals",
             odyssey: "goNavExamples",
@@ -1108,8 +1110,10 @@ window.onload = app;
             }
 
             this.detailsView.render();
-            console.log("Element Not Found");
-            this.detailsView.overlay();
+        },
+
+        goToLayouts: function goToLayouts() {
+            this.animationsView.render();
         }
     });
 
@@ -1298,10 +1302,15 @@ window.onload = app;
             }
         } });
 
+    Backbone.LayoutsView = MyViewConstructor.TemplateView.extend({
+        el: ".wrapper",
+        view: "layouts"
+    });
+
     exports.AppRouter = Backbone.AppRouter;
 })(typeof module === "object" ? module.exports : window);
 
-},{"./TemplateView.js":2,"backbone":10,"jQuery":12,"lodash":14}],5:[function(require,module,exports){
+},{"./TemplateView.js":3,"backbone":10,"jQuery":12,"lodash":14}],5:[function(require,module,exports){
 // required to safely use babel/register within a browserify codebase
 
 "use strict";
@@ -28425,4 +28434,4 @@ arguments[4][12][0].apply(exports,arguments)
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[3]);
+},{}]},{},[1]);

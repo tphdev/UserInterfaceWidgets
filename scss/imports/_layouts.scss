@@ -1,0 +1,204 @@
+main#layouts{ 
+	padding-top: 2.0rem .25rem;
+
+	header.theme-header{
+  	  background-color: $my-dark-red
+  	}
+
+		$med-sc-height: 30rem;
+   		$med-lg-sc-height:25rem;
+    	$lg-sc-height: 22rem;
+
+	.row1{
+	    @include outer-container(100%);
+	    @include row(table);
+
+	    section{
+	         @include media($medium-screen){
+	            @include span-columns(8);
+	            height: $med-sc-height;
+	        }
+	    
+	      @include media(790px){
+	        height: $med-lg-sc-height;
+	      }
+
+	      @include media($large-screen){
+	          height: $lg-sc-height;
+	      }
+
+
+	      &:nth-of-type(2n){
+	        @include media($medium-screen) {
+	          @include span-columns(4);
+	          @include omega();
+	        }
+	      }
+	    }
+	 }
+}
+
+section{
+    padding: 1.0rem;
+    $sct-bd-width: 5px;
+
+    h4{
+      text-align: center;
+      padding: 1rem;
+      color: #fff;
+      text-shadow: 1px 1px #555;
+      font-weight: 200;
+    }
+
+    button{
+      border: 1px $white-translucent solid;
+    }
+
+	&.isotope{
+      $section-color: $my-dark-blue;
+      background: #fff;
+      border: $sct-bd-width solid $section-color;
+		
+		h4{
+			background: $section-color;
+		}
+	}
+
+	&.parallax-demo{
+		$section-color: $my-dark-purple;
+     	background: #fff;
+     	border: $sct-bd-width solid $section-color;
+		
+		h4{
+			background: $section-color;
+		}
+
+		button{
+			background-color: $my-purple;
+		}
+
+	}
+
+}
+
+
+
+
+
+// PARALLAX STYLING
+.parallax{
+	$perspective-val: 200px;
+	perspective: $perspective-val;
+	height: 500px;
+	height: 60vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	perspective-origin-x: 100%;
+
+	
+	.parallax__group{
+		position: relative;
+		height: 100vh;
+		transform-style: preserve-3d;
+		.parallax__layer{
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			padding: 75vh 0;
+
+			transform-origin-x: 100%;
+		}
+
+		.parallax__layer--base{
+			transform: translateZ(0);
+		}
+
+		.parallax__layer--back{
+			// note: higher number = slower scroll
+			$tZ-val: -600px;
+			$scale-factor: 1 + ($tZ-val * -1) / $perspective-val;
+		
+			transform: translateZ($tZ-val) scale($scale-factor);
+		}
+
+		.parallax__layer--fore{
+			$tZ-val: -200px;
+			$scale-factor: 1 + ($tZ-val * -1) / $perspective-val;
+			transform: translateZ($tZ-val) scale($scale-factor);
+		}
+
+		.parallax__layer--fore2{
+			$tZ-val: 50px;
+			$scale-factor: 1 + ($tZ-val * -1) / $perspective-val;
+			transform: translateZ($tZ-val) scale($scale-factor);
+		}
+
+		.parallax__layer--fore3{
+			$tZ-val: -100px;
+			$scale-factor: 1 + ($tZ-val * -1) / $perspective-val;
+			transform: translateZ($tZ-val) scale($scale-factor);
+		}
+			
+	
+	}
+}
+
+.style-pbox{
+	background: url('../images/paris-2.jpg') center center no-repeat;
+	background-size: cover;
+	
+
+	.style-base{
+		background: $my-light-orange;
+		color: #333;
+		padding: 0%;
+	}
+
+	.style-background{
+		width: 100%;
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform: translate(-50%,-50%);	
+		
+		background: $my-blue;
+		color: white;
+		padding: 5%;
+		z-index: 2;
+	}
+
+	.style-foreground{
+		position: relative;
+		z-index: 5;
+		width: 100%;
+
+		span{
+			z-index: 6;
+			font-size: 2.5rem;
+			display: block;
+			position: absolute;
+		}
+
+		span.flyer{
+			right: 60%;
+			transform: translateX(-60%);
+			color: transparentize($my-light-orange,.15)
+		}
+
+
+		span.rocket{
+			left: 50%;
+			transform: translateX(-50%);
+			color: transparentize($my-light-green,.35)
+		}
+
+		span.plane{
+			right: 10%;
+			transform: translateX(-10%);
+			color: transparentize($my-light-purple,.15)
+		}
+	}
+}

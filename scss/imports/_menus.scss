@@ -497,6 +497,7 @@ nav.icon-panel{
     font-size: 0;
     text-align: justify;
     position: relative;
+    padding: 0 $gutter*2;
 
     & > * {
         font-size: medium;
@@ -504,6 +505,8 @@ nav.icon-panel{
         display: inline-block;
         width: 100%;
         vertical-align: top;
+        margin: $gutter 0;
+        transition: all .3s;
 
         @media screen and (min-width: $md-screen-px){
           width: (100%/$md-screen-cols)-$gutter;
@@ -525,12 +528,10 @@ nav.icon-panel{
 
   ul.main-list {
     font-size: 0;
-    padding: 0 2%;
 
     li.grid-item{
       border: 2px #333 solid;
       padding: 1rem;
-      margin: 1% 0;
       position: relative;
 
       .logo{
