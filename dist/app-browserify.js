@@ -1078,10 +1078,13 @@ window.onload = app;
             this.menusView = new Backbone.MenusView();
             this.detailsView = new Backbone.DetailsView();
             this.animationsView = new Backbone.LayoutsView();
+            this.formTableView = new Backbone.FormTableView();
+
             Backbone.history.start();
         },
 
         routes: {
+            "form-table": "goToFormsTables",
             layouts: "goToLayouts",
             details: "goToDetails",
             "menus-and-modals": "goMenusAndModals",
@@ -1114,7 +1117,12 @@ window.onload = app;
 
         goToLayouts: function goToLayouts() {
             this.animationsView.render();
+        },
+
+        goToFormsTables: function goToFormsTables() {
+            this.formTableView.render();
         }
+
     });
 
     Backbone.HomeView = MyViewConstructor.TemplateView.extend({
@@ -1305,6 +1313,20 @@ window.onload = app;
     Backbone.LayoutsView = MyViewConstructor.TemplateView.extend({
         el: ".wrapper",
         view: "layouts"
+    });
+
+    Backbone.FormTableView = MyViewConstructor.TemplateView.extend({
+        el: ".wrapper",
+        view: "form-table",
+
+        events: {
+            "click .form-btn": "toggleForm"
+        },
+
+        toggleForm: function toggleForm(evt) {
+            $(".form").toggleClass("show");
+            console.log("hey");
+        }
     });
 
     exports.AppRouter = Backbone.AppRouter;

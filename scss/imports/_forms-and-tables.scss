@@ -1,66 +1,167 @@
-.container{
-	margin: 0px auto 0;
-}
+main#forms-tables{ 
+	padding-top: 2.0rem .25rem;
 
-.col{
-	padding: 1% 8%;
+	header.theme-header{
+  	  background-color: $my-dark-green
+  	}
 
-}
 
-form > label {
-	display: block;
-	margin-top: 1.5em;
-	color: #fff;
-}
+  	section{
+    color: white;
+    padding: 1.0rem .25rem;
+    height: 50vh;
+   	$sct-bd-width: 5px;
 
-form > input,
-form > textarea,
-form > select
-{
-	display: block;
-	width: 100%;
-	padding: 3%;
-	border: 2px solid #fff;
-	background: rgba(0,100,150,0.0);
-	color: white;
+    @include row(table);
+    @include media($medium-screen){
+        @include span-columns(6);
 
-	}
+    }
+    
+    h3{
+      text-align: center;
+      padding: 1rem;
+      font-weight: 200;
+    }
 
-	form > input:hover,
-	form > textarea:hover,
-	form > select:hover{
-	border: 2px solid #999;
-	}
+    p{
+      color: #333;
+      padding: .5rem;
+    }
 
-	form > input:focus,
-	form > textarea:focus,
-	form > select:focus {
-		border: 2px solid rgba(40,160,210,1.0);;
-		box-shadow: 0px 0px 0px;
-		outline: 0px;
-	}
-	
-form > select
-{
-	border: solid 2px #777;
-	padding: 15px;
-	border-radius: 0px;
-}
+    button{
+      border: 1px $white-translucent solid;
+    }
 	
 
-form > textarea {
-	height: 120px;
-	resize: none;
+    &.form-abb{
+      background: #fff;
+      border: $my-blue $sct-bd-width solid;
+	      h3{
+	        background: $my-blue;
+	        @include row()
+	      }
+	
+		.form-btn{
+	      	margin: 0 auto;
+	      	background: $my-light-blue;
+	      }
+     }
+
+     	
+    &.table-abb{
+      border: $my-orange $sct-bd-width solid;
+      background: #fff;
+
+      h3{
+        background: $my-orange;
+        text-shadow: 1px 1px #555;
+
+      }
+      
+      button{
+        display: block;
+        background-color: $my-light-orange;
+        color: white;
+        padding: 1.0rem .75rem;
+        cursor: pointer;
+        font-weight: 600;
+        margin: .5rem auto;
+      }
+    }
+  }
 }
 
-@media screen and (min-width: 700px) {
+.form{
+	margin: 1rem auto 0 auto;
+	background: rgba(0,100,150,1.0);
+	opacity: 0;
+	display:none;
+	transition: all .3s;
 
-	/*3 left floating columns*/
+	&.show{
+		display: block;
+		opacity:1;
+	}
+	
+	// clearfix
+	&:after{
+		display: table;
+		content:"";
+		clear: both;
+	}
+
+	.heading{
+		text-align: center;
+		color: #fff;
+		margin: 0;
+		padding: 1rem;
+	}
+
+	hr{
+		width: 50%;
+		margin: auto;
+	}
+
 
 	.col{
-	float: left;
-	width: 33%;
-	padding: 1% 2%;
-	background: rgba(0,100,150,1.0);
+		padding: 1% 8%;
+		background: rgba(0,100,150,1.0);
+
+	}
+	form > label {
+		display: block;
+		margin-top: 1.5em;
+		color: #fff;
+	}
+
+	form > input,
+	form > textarea,
+	form > select
+	{
+		display: block;
+		width: 100%;
+		padding: 3%;
+		border: 2px solid #fff;
+		background: rgba(0,100,150,0.0);
+		color: white;
+
+		}
+
+		form > input:hover,
+		form > textarea:hover,
+		form > select:hover{
+		border: 2px solid #999;
+		}
+
+		form > input:focus,
+		form > textarea:focus,
+		form > select:focus {
+			border: 2px solid rgba(40,160,210,1.0);;
+			box-shadow: 0px 0px 0px;
+			outline: 0px;
+		}
+		
+	form > select
+	{
+		border: solid 2px #777;
+		padding: 15px;
+		border-radius: 0px;
+	}
+		
+
+	form > textarea {
+		height: 120px;
+		resize: none;
+	}
+
+	@media screen and (min-width: 700px) {
+		/*3 left floating columns*/
+		.col{
+		float: left;
+		width: 33%;
+		padding: 1% 2%;
+		}
+		
 	}
 }
