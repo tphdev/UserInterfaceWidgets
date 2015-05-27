@@ -35,33 +35,34 @@ main#forms-tables{
 	
 
     &.form-abb{
+    	$sct-color: $my-green;
       background: #fff;
-      border: $my-blue $sct-bd-width solid;
+      border: $sct-color $sct-bd-width solid;
 	      h3{
-	        background: $my-blue;
+	        background: $sct-color;
 	        @include row()
 	      }
 	
 		.form-btn{
 	      	margin: 0 auto;
-	      	background: $my-light-blue;
+	      	background: $my-light-green;
 	      }
      }
 
      	
     &.table-abb{
-      border: $my-orange $sct-bd-width solid;
+      border: $my-blue $sct-bd-width solid;
       background: #fff;
 
       h3{
-        background: $my-orange;
+        background: $my-blue;
         text-shadow: 1px 1px #555;
 
       }
       
       button{
         display: block;
-        background-color: $my-light-orange;
+        background-color: $my-light-blue;
         color: white;
         padding: 1.0rem .75rem;
         cursor: pointer;
@@ -74,7 +75,7 @@ main#forms-tables{
 
 .form{
 	margin: 1rem auto 0 auto;
-	background: rgba(0,100,150,1.0);
+	background: $my-dark-green;
 	opacity: 0;
 	display:none;
 	transition: all .3s;
@@ -106,8 +107,7 @@ main#forms-tables{
 
 	.col{
 		padding: 1% 8%;
-		background: rgba(0,100,150,1.0);
-
+	
 	}
 	form > label {
 		display: block;

@@ -55,12 +55,16 @@ section{
     }
 
 	&.isotope{
-      $section-color: $my-dark-blue;
+      $section-color: $my-red;
       background: #fff;
       border: $sct-bd-width solid $section-color;
 		
 		h4{
 			background: $section-color;
+		}
+
+		button{
+			background: $my-light-red;
 		}
 	}
 
@@ -83,10 +87,13 @@ section{
 
 
 
-
+.parallax{
+	display: none;
+	}
 
 // PARALLAX STYLING
 .parallax{
+
 	$perspective-val: 200px;
 	perspective: $perspective-val;
 	height: 500px;

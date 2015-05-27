@@ -11,12 +11,12 @@ $nav-dark-translucent: rgba(23,24,72,.7);
 
 
 
-$page-colors: 
-	rgba(182,175,217,1),
-	rgba(176,145,140,1),
-	rgba(207,170,140,1),
-	rgba(201,198,169,1),
-	rgba(197,116,99,1);
+$monokai-colors: 
+	rgba(204,53,106,1),
+	rgba(151,243,255,1),
+	rgba(164,193,70,1),
+	rgba(156,136,205,1),
+	rgba(223,145,33,1);
 
 .click-me{
 	position: fixed;
@@ -235,12 +235,10 @@ main#nav-examples{
 
 	section {
 		padding: 0 1%;
-	//stops iterates 1,2,3
-		@for $i from 2 to 6{
-			&:nth-child(#{$i}){background: nth($page-colors, $i);}
-		}
+		background: rgba(36,36,48,1);
+	
 		
-		article{
+		article {
 			@include outer-container(800px);
 
 			hr{
@@ -250,6 +248,14 @@ main#nav-examples{
 			.showpiece{
 				margin: 0 auto;
 				text-align: center;
+				color: #fff;
+
+				@for $i from 1 to 5{
+					&:nth-child(#{$i}){color: nth($monokai-colors, $i);}
+				}
+
+
+
 
 				img{
 					display: inline-block;

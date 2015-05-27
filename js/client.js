@@ -2,11 +2,14 @@
     "use strict"
 
     var $ = require('jQuery'), 
+    Masonry = require('masonry-layout'),
     _ = require('lodash'),
     Backbone = require('backbone'),
-    MyViewConstructor = require('./TemplateView.js')
+    MyViewConstructor = require('./TemplateView.js'),
+    Velocity = require("../node_modules/velocity-animate/velocity.min.js")
 
-    Backbone.$ = $,
+    Backbone.$ = $;
+
 
     Backbone.AppRouter = Backbone.Router.extend({
         initialize: function(){
@@ -17,6 +20,7 @@
             this.detailsView = new Backbone.DetailsView();
             this.animationsView = new Backbone.LayoutsView();
             this.formTableView = new Backbone.FormTableView();
+
 
             Backbone.history.start();
         },
@@ -32,6 +36,19 @@
 
         goHome: function(){
             this.homeView.render();
+             var el = document.querySelectorAll('.flex-box');
+            
+
+             // why no render
+
+            Velocity(el, 
+                {width: "50%"}, 
+                5000);
+            Velocity(el, 
+                "reverse", 
+                1000);
+
+            
         },
 
         goNavExamples: function(){
@@ -253,7 +270,16 @@
 
     Backbone.LayoutsView = MyViewConstructor.TemplateView.extend({
         el: '.wrapper',
-        view: 'layouts'
+        view: 'layouts',
+
+        events: {
+            'click .parallax-btn': 'showParallax'
+        },
+
+        showParallax: function(){
+            console.log('hi');
+            $('.parallax').show();
+        }
     })
 
     Backbone.FormTableView = MyViewConstructor.TemplateView.extend({
