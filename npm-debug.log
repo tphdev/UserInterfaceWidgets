@@ -1,87 +1,26 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'masonsry-layout' ]
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.32
-4 warn package.json @ No description
-5 warn package.json @ No repository field.
-6 warn package.json parse@1.4.2 No repository field.
-7 warn package.json parse@1.4.2 No README data
-8 warn package.json shim@0.6.0 'repositories' (plural) Not supported. Please pick one as the 'repository' field
-9 warn package.json shim@0.6.0 No README data
-10 verbose readDependencies using package.json deps
-11 verbose cache add [ 'masonsry-layout', null ]
-12 verbose cache add name=undefined spec="masonsry-layout" args=["masonsry-layout",null]
-13 verbose parsed url { protocol: null,
-13 verbose parsed url   slashes: null,
-13 verbose parsed url   auth: null,
-13 verbose parsed url   host: null,
-13 verbose parsed url   port: null,
-13 verbose parsed url   hostname: null,
-13 verbose parsed url   hash: null,
-13 verbose parsed url   search: null,
-13 verbose parsed url   query: null,
-13 verbose parsed url   pathname: 'masonsry-layout',
-13 verbose parsed url   path: 'masonsry-layout',
-13 verbose parsed url   href: 'masonsry-layout' }
-14 silly lockFile 42b2ae72-masonsry-layout masonsry-layout
-15 verbose lock masonsry-layout /Users/travish/.npm/42b2ae72-masonsry-layout.lock
-16 silly lockFile 42b2ae72-masonsry-layout masonsry-layout
-17 silly lockFile 42b2ae72-masonsry-layout masonsry-layout
-18 verbose addNamed [ 'masonsry-layout', '' ]
-19 verbose addNamed [ null, '*' ]
-20 silly lockFile 536b0aa5-masonsry-layout masonsry-layout@
-21 verbose lock masonsry-layout@ /Users/travish/.npm/536b0aa5-masonsry-layout.lock
-22 silly addNameRange { name: 'masonsry-layout', range: '*', hasData: false }
-23 verbose request where is /masonsry-layout
-24 verbose request registry https://registry.npmjs.org/
-25 verbose request id fbaefb744f47d16b
-26 verbose url raw /masonsry-layout
-27 verbose url resolving [ 'https://registry.npmjs.org/', './masonsry-layout' ]
-28 verbose url resolved https://registry.npmjs.org/masonsry-layout
-29 verbose request where is https://registry.npmjs.org/masonsry-layout
-30 info trying registry request attempt 1 at 19:50:48
-31 http GET https://registry.npmjs.org/masonsry-layout
-32 http 404 https://registry.npmjs.org/masonsry-layout
-33 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-33 verbose headers   'content-type': 'application/json',
-33 verbose headers   'cache-control': 'max-age=0',
-33 verbose headers   'content-length': '51',
-33 verbose headers   'accept-ranges': 'bytes',
-33 verbose headers   date: 'Fri, 22 May 2015 00:43:27 GMT',
-33 verbose headers   via: '1.1 varnish',
-33 verbose headers   age: '0',
-33 verbose headers   connection: 'keep-alive',
-33 verbose headers   'x-served-by': 'cache-dfw1831-DFW',
-33 verbose headers   'x-cache': 'MISS',
-33 verbose headers   'x-cache-hits': '0',
-33 verbose headers   'x-timer': 'S1432255407.006433,VS0,VE191' }
-34 silly registry.get cb [ 404,
-34 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-34 silly registry.get     'content-type': 'application/json',
-34 silly registry.get     'cache-control': 'max-age=0',
-34 silly registry.get     'content-length': '51',
-34 silly registry.get     'accept-ranges': 'bytes',
-34 silly registry.get     date: 'Fri, 22 May 2015 00:43:27 GMT',
-34 silly registry.get     via: '1.1 varnish',
-34 silly registry.get     age: '0',
-34 silly registry.get     connection: 'keep-alive',
-34 silly registry.get     'x-served-by': 'cache-dfw1831-DFW',
-34 silly registry.get     'x-cache': 'MISS',
-34 silly registry.get     'x-cache-hits': '0',
-34 silly registry.get     'x-timer': 'S1432255407.006433,VS0,VE191' } ]
-35 silly lockFile 536b0aa5-masonsry-layout masonsry-layout@
-36 silly lockFile 536b0aa5-masonsry-layout masonsry-layout@
-37 error 404 404 Not Found: masonsry-layout
-37 error 404
-37 error 404 'masonsry-layout' is not in the npm registry.
-37 error 404 You should bug the author to publish it
-37 error 404
-37 error 404 Note that you can also install from a
-37 error 404 tarball, folder, or http url, or git url.
-38 error System Darwin 13.4.0
-39 error command "node" "/usr/local/bin/npm" "install" "masonsry-layout"
-40 error cwd /Users/travish/GithubProjects/Explorations/UserInterfaceWidgets
-41 error node -v v0.10.32
-42 error npm -v 1.4.28
-43 error code E404
-44 verbose exit [ 1, true ]
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info prestart @
+6 info start @
+7 verbose unsafe-perm in lifecycle true
+8 info @ Failed to exec start script
+9 error @ start: `node heroku-server.js & npm run watch`
+9 error Exit status 137
+10 error Failed at the @ start script.
+10 error This is most likely a problem with the  package,
+10 error not with npm itself.
+10 error Tell the author that this fails on your system:
+10 error     node heroku-server.js & npm run watch
+10 error You can get their info via:
+10 error     npm owner ls
+10 error There is likely additional logging output above.
+11 error System Darwin 13.4.0
+12 error command "node" "/usr/local/bin/npm" "start"
+13 error cwd /Users/travish/GithubProjects/Explorations/UserInterfaceWidgets
+14 error node -v v0.10.32
+15 error npm -v 1.4.28
+16 error code ELIFECYCLE
+17 verbose exit [ 1, true ]

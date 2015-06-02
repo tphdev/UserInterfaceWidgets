@@ -21,6 +21,7 @@
             this.animationsView = new Backbone.LayoutsView();
             this.formTableView = new Backbone.FormTableView();
 
+            
 
             Backbone.history.start();
         },

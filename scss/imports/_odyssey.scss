@@ -234,11 +234,12 @@ main#nav-examples{
 
 
 	section {
-		padding: 0 1%;
+		padding: 1.5rem 1% 0 1%;
 		background: rgba(36,36,48,1);
 	
 		
 		article {
+
 			@include outer-container(800px);
 
 			hr{

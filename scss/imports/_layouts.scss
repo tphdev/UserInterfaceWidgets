@@ -36,55 +36,55 @@ main#layouts{
 	      }
 	    }
 	 }
-}
 
-section{
-    padding: 1.0rem;
-    $sct-bd-width: 5px;
 
-    h4{
-      text-align: center;
-      padding: 1rem;
-      color: #fff;
-      text-shadow: 1px 1px #555;
-      font-weight: 200;
-    }
+	section{
+	    padding: 1.0rem;
+	    $sct-bd-width: 5px;
 
-    button{
-      border: 1px $white-translucent solid;
-    }
+	    h4{
+	      text-align: center;
+	      padding: 1rem;
+	      color: #fff;
+	      text-shadow: 1px 1px #555;
+	      font-weight: 200;
+	    }
 
-	&.isotope{
-      $section-color: $my-red;
-      background: #fff;
-      border: $sct-bd-width solid $section-color;
-		
-		h4{
-			background: $section-color;
+	    button{
+	      border: 1px $white-translucent solid;
+	    }
+
+		&.isotope{
+	      $section-color: $my-red;
+	      background: #fff;
+	      border: $sct-bd-width solid $section-color;
+			
+			h4{
+				background: $section-color;
+			}
+
+			button{
+				background: $my-light-red;
+			}
 		}
 
-		button{
-			background: $my-light-red;
+		&.parallax-demo{
+			$section-color: $my-dark-purple;
+	     	background: #fff;
+	     	border: $sct-bd-width solid $section-color;
+			
+			h4{
+				background: $section-color;
+			}
+
+			button{
+				background-color: $my-purple;
+			}
+
 		}
+
 	}
-
-	&.parallax-demo{
-		$section-color: $my-dark-purple;
-     	background: #fff;
-     	border: $sct-bd-width solid $section-color;
-		
-		h4{
-			background: $section-color;
-		}
-
-		button{
-			background-color: $my-purple;
-		}
-
-	}
-
 }
-
 
 
 .parallax{
@@ -209,3 +209,7 @@ section{
 		}
 	}
 }
+
+
+//Reponsive Layout
+
