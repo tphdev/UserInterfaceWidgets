@@ -120,6 +120,10 @@ nav{
 	top: 50%;
 	left: 50%;
 
+	h3{
+		margin: 0 0 .3725rem;
+	}
+
 
 	perspective: 1300px;
 	transform: translateX(-50%) translateY(-50%);
@@ -251,10 +255,10 @@ main#nav-examples{
 				text-align: center;
 				color: #fff;
 
-				@for $i from 1 to 5{
-					&:nth-child(#{$i}){color: nth($monokai-colors, $i);}
+				h3{
+					font-weight: 200;
+					margin: 0 0 .25rem;
 				}
-
 
 
 

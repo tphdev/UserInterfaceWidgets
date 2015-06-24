@@ -1287,8 +1287,8 @@ window.onload = app;
             "click .toggle-content": "accordionHandler" },
 
         overlayHandler: function overlayHandler(evt) {
-            console.log(".content-slider Found...");
-            var cs = $(".content-slider");
+            console.log("overlay");
+
             var insertOverlay = function insertOverlay(e) {
                 var effect = $(e.target).attr("data-effect");
                 $(".mdl-context" + "." + effect).addClass("mdl-show");

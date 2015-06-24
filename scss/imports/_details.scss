@@ -291,6 +291,7 @@ $mdl-font-color: #fff;
 $mdl-txt-shadow: 1px 1px #555;
 
 
+/*Necessary features*/
 .mdl-context{
   opacity: 0;
   position: fixed;
@@ -350,6 +351,8 @@ $mdl-txt-shadow: 1px 1px #555;
     opacity: 1;
   }
 }
+
+
 
 .mdl-effect-slide-in{
   left: 0%;
@@ -488,7 +491,7 @@ $mdl-txt-shadow: 1px 1px #555;
 
 
           &.current-slide{
-            background: $my-yellow;
+            background: $my-light-green;
           }
 
           &:nth-child(1n+2){

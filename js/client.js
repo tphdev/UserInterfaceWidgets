@@ -208,8 +208,8 @@
         },
 
         overlayHandler: function(evt){
-            console.log('.content-slider Found...')
-            var cs = $('.content-slider');
+            console.log('overlay')
+
             var insertOverlay = function(e){
                 var effect = $(e.target).attr('data-effect');
                 $('.mdl-context'+'.'+effect).addClass('mdl-show')
