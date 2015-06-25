@@ -18,7 +18,9 @@
             this.odysseyView = new Backbone.OdysseyView();
             this.menusView = new Backbone.MenusView();
             this.detailsView = new Backbone.DetailsView();
-            this.animationsView = new Backbone.LayoutsView();
+            this.layoutsView = new Backbone.LayoutsView();
+            this.rolldownView = new Backbone.RollDownView();
+
             this.formTableView = new Backbone.FormTableView();
 
             
@@ -28,6 +30,7 @@
 
         routes: {
             "form-table": "goToFormsTables",
+            "layouts/rolldown": "goToRolldown",
             "layouts": "goToLayouts",
             "details": "goToDetails",
             "menus-and-modals": "goMenusAndModals",
@@ -38,17 +41,6 @@
         goHome: function(){
             this.homeView.render();
              var el = document.querySelectorAll('.flex-box');
-            
-
-             // why no render
-
-            Velocity(el, 
-                {width: "50%"}, 
-                5000);
-            Velocity(el, 
-                "reverse", 
-                1000);
-
             
         },
 
@@ -73,7 +65,11 @@
         },
 
         goToLayouts: function(){
-            this.animationsView.render();
+            this.layoutsView.render();
+        },
+
+        goToRolldown: function(){
+            this.rolldownView.render();
         },
 
         goToFormsTables: function(){
@@ -282,6 +278,16 @@
             $('.parallax').show();
         }
     })
+
+    Backbone.RollDownView = MyViewConstructor.TemplateView.extend({
+        el: '.wrapper',
+        view: '_layouts_rolldown',
+
+        events: {
+        }
+
+    })
+
 
     Backbone.FormTableView = MyViewConstructor.TemplateView.extend({
         el: '.wrapper',

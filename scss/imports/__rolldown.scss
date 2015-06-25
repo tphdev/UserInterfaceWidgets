@@ -1,0 +1,63 @@
+main#rolldown-layout{
+	$nature-med-blue: rgba(75,117,150,1);
+	$nature-light-blue: rgba(243,245,250,1);
+	$nature-off-white: rgba(242,223,216,1);
+	$nature-sand: rgba(191,159,148,1);
+	$nature-dark-brown: rgba(50,34,17,1);
+	/*--The rolldown effect is right here */
+	nav{
+		background: black;
+		color: white;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 5;
+		height: 8rem;
+		width: 100%;
+	}
+
+	header{
+		position:relative;
+		height: 100vh;
+		color: white;
+		z-index: 10;
+		background: red;
+
+	}
+	/*---------------------e*/
+
+	header{
+		background: url('../images/rolldown/sky-clouds.jpg') center center no-repeat;
+		background-size: cover;
+	}
+
+	nav{
+		background: $nature-dark-brown;
+	}
+	
+	section{
+		color: $nature-dark-brown;
+		padding: 2rem;
+		margin: auto;
+		article{
+			max-width: 800px;
+			padding: 2rem;
+			background: $nature-off-white;
+			margin: 4rem auto;
+			border: 1px $nature-sand solid;
+			box-shadow: 4px 4px 20px #ccc;
+			h3{
+				font-weight: 200;
+			}
+
+			p{
+
+			}
+			.img-container{
+				max-width: 700px;
+				margin: 0 auto .75rem;
+			}
+		}
+	}
+
+}
