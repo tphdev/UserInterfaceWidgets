@@ -288,12 +288,20 @@
         view: 'form-table',
 
         events: {
-            'click .form-btn': 'toggleForm'
+            'click .form-btn': 'toggleForm',
+            'click .table-btn': 'toggleTable'
         },
 
         toggleForm: function(evt){
             $('.form').toggleClass('show')
-            console.log('hey')
+            $('.table').removeClass('show')
+            console.log('forrmzo')
+        },
+
+        toggleTable: function(evt){
+            $('.table').toggleClass('show')
+            $('.form').removeClass('show')
+            console.log('table')
         }
     })
 

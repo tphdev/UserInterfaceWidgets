@@ -1367,12 +1367,20 @@ window.onload = app;
         view: "form-table",
 
         events: {
-            "click .form-btn": "toggleForm"
+            "click .form-btn": "toggleForm",
+            "click .table-btn": "toggleTable"
         },
 
         toggleForm: function toggleForm(evt) {
             $(".form").toggleClass("show");
-            console.log("hey");
+            $(".table").removeClass("show");
+            console.log("forrmzo");
+        },
+
+        toggleTable: function toggleTable(evt) {
+            $(".table").toggleClass("show");
+            $(".form").removeClass("show");
+            console.log("table");
         }
     });
 

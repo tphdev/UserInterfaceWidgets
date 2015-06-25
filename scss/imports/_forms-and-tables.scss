@@ -5,7 +5,6 @@ main#forms-tables{
   	  background-color: $my-dark-green
   	}
 
-
   	section{
     color: white;
     padding: 1.0rem .25rem;
@@ -44,6 +43,7 @@ main#forms-tables{
 	      }
 	
 		.form-btn{
+			display: block;
 	      	margin: 0 auto;
 	      	background: $my-light-green;
 	      }
@@ -70,14 +70,18 @@ main#forms-tables{
         margin: .5rem auto;
       }
     }
+
   }
+
+
 }
 
 .form{
-	margin: 1rem auto 0 auto;
+	display:none;
+
+	margin:  auto ;
 	background: $my-dark-green;
 	opacity: 0;
-	display:none;
 	transition: all .3s;
 
 	&.show{
@@ -167,6 +171,11 @@ main#forms-tables{
 }
 
 .table{	
+	display: none;
+	&.show{
+			display: block;
+		}
+
 	table{
 	/*Default Styles*/
 	  border-collapse: collapse;
@@ -182,7 +191,6 @@ main#forms-tables{
 		  padding: .75em 0;
 		  &:first-child{
 		  	padding-left: .5rem;
-			font-weight: 700;
 		  }
 		}
 
@@ -220,7 +228,8 @@ main#forms-tables{
 
 @media screen and (max-width: 550px){
 	.table{
-	
+		display: none;
+
 		table {
 			position: relative;
 		
@@ -232,6 +241,7 @@ main#forms-tables{
 			}
 
 			thead{
+
 				$uniqID-thead-border: #dfdfdf;
 				th {
 					width: 100%;
@@ -252,10 +262,23 @@ main#forms-tables{
 					&:first-child{
 						border-bottom: 1px solid $uniqID-tbody-border;
 						padding-left: 1.0rem;
+						font-weight: 700;
+
 					}
 				}
 			}
 		}
-
 	}
+}
+
+.form, .table{
+	p.responsive{
+		background: #fff;
+	    text-align: center;
+	    font-size: 1.333em;
+	    color: $my-orange;
+	    margin: 0;
+	    padding: .5rem;
+	  }
+
 }
