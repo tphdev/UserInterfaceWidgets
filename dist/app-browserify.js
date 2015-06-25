@@ -1368,7 +1368,22 @@ window.onload = app;
         el: ".wrapper",
         view: "_layouts_rolldown",
 
-        events: {}
+        events: {
+            "click a.jump-to": "scrollToPlace"
+        },
+
+        scrollToPlace: function scrollToPlace(evt) {
+            console.log("working or routing?");
+            evt.preventDefault();
+            var anchorName = $(evt.target).attr("href").substr(1);
+            var domElPosition = $("a[name=\"" + anchorName + "\"]").position();
+
+            var navBarHeight = $("nav").height();
+
+            $("html, body").animate({
+                scrollTop: domElPosition.top - navBarHeight
+            }, 1000);
+        }
 
     });
 
