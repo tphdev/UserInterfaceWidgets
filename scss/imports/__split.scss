@@ -1,0 +1,177 @@
+main#split{
+
+$modern-darkblue: rgba(43,58,66,1);
+$modern-blue: rgba(83,114,133,1);
+$modern-lightblue: rgba(189,212,222,1);
+$modern-gray: rgba(239,239,239,1);
+$modern-red: rgba(255,83,13,1);
+$modern-dark-red: rgba(99,32,5,1);
+
+
+	.split-wrapper{
+		$main-color: $modern-blue;
+		$off-color: #fff;
+		$altColor1: $modern-darkblue;
+		$altColor2: $modern-gray;
+		$altColor3: $modern-dark-red;
+	
+		position: relative;
+		font-weight: 200;
+		height: 100vh;
+		overflow: hidden;
+
+		.side-flap{
+
+			$el-width: 75%;
+			
+			top: 0%;
+			position: absolute;
+			width: $el-width;
+			height: 100%;
+
+			&.left{
+				left: -75%;		
+				/*state2*/
+				transition: all .3s;
+
+				&.__shift-flap-right{
+					left: 0%;
+					z-index: 1000;
+					background: $altColor1;
+				}
+			}
+
+			&.right{
+				right: -75%;
+				transition: all .3s;
+
+
+				&.__shift-flap-left{
+					right: 0%;
+					z-index: 1000;
+					background: $altColor3;
+				}
+			}
+		}
+		
+		.central-flap{
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 100%;
+			transition: all .3s;
+
+			&.__shift-center-right{
+
+				> .main-pane.left{
+					width: 25%;
+					left: 75%;
+
+					.image-container{
+						transform: scale(.5,.5);
+						font-size: 50%;
+					}
+				}
+
+				>.main-pane.right{
+					width: 0%;
+					left: 100%;
+				}
+			}
+
+			&.__shift-center-left{
+				> .main-pane.right{
+					width: 25%;
+					left: 0%;
+
+					.image-container{
+						transform: scale(.5,.5);
+						font-size: 50%;
+					}
+				}
+
+				>.main-pane.left{
+					width: 0%;
+				}
+			}
+
+			.main-pane{
+				position: absolute;
+				width: 50%;
+				height: 100%;
+
+
+				&.left{
+					top: 0%;
+					left: 0%;
+					background: $main-color;
+					color: $off-color;
+					transition: all .3s;
+
+					
+					.image-container{
+						background: $off-color;
+					}
+
+					hr{
+						border-bottom: 2px solid $off-color;
+					}
+				}
+
+				&.right{
+					top:0%;
+					left: 50%;
+					background: $off-color;
+					color: $altColor3;
+					transition: all .3s;
+
+					.image-container{
+						background: $altColor3;
+					}
+					
+					hr{
+						border-bottom: 2px solid $main-color;
+					}
+				}
+
+				.open-pane{
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 50%;
+					transform: translate(-50%,-50%);
+					text-align: center;
+					cursor: pointer;
+
+					h4,h6,hr{
+						margin: 0;
+					}
+					
+					.image-container{
+						border-radius: 50%;
+						border: 1px solid;
+						height: 100px;
+						width: 100px;
+						margin: 1rem auto;
+					}
+					
+					h4{
+						font-weight: 200;
+					}
+
+					h6{
+						font-weight: 400;
+					}
+
+					hr{
+						margin: .25rem 0;
+					}
+				}	
+			}
+		}	
+	}
+
+
+
+}

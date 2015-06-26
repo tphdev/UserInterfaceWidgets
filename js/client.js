@@ -20,6 +20,7 @@
             this.detailsView = new Backbone.DetailsView();
             this.layoutsView = new Backbone.LayoutsView();
             this.rolldownView = new Backbone.RollDownView();
+            this.splitView = new Backbone.SplitView();
 
             this.formTableView = new Backbone.FormTableView();
 
@@ -30,6 +31,7 @@
 
         routes: {
             "form-table": "goToFormsTables",
+            "layouts/split-view": "goToSplitView",
             "layouts/rolldown": "goToRolldown",
             "layouts": "goToLayouts",
             "details": "goToDetails",
@@ -70,6 +72,10 @@
 
         goToRolldown: function(){
             this.rolldownView.render();
+        },
+
+        goToSplitView: function(){
+            this.splitView.render();
         },
 
         goToFormsTables: function(){
@@ -302,6 +308,32 @@
 
     })
 
+    Backbone.SplitView = MyViewConstructor.TemplateView.extend({
+        el: '.wrapper',
+        view: '_layouts_split',
+
+        events: {
+            "click .open-pane":"showFlap"
+        },
+
+        showFlap: function(evt){
+            var $centralFlap = $('.central-flap'),
+                $sideFlap_Left = $('.side-flap.left'),
+                $sideFlap_Right = $('.side-flap.right'),
+                 leftPaneClick = $(evt.target).closest('.main-pane').hasClass('left')
+            
+            if(leftPaneClick){
+                $centralFlap.addClass('__shift-center-right')
+                $sideFlap_Left.addClass('__shift-flap-right')
+            } else {
+                $centralFlap.addClass('__shift-center-left')
+                $sideFlap_Right.addClass('__shift-flap-left')
+            }
+        }
+        
+
+    })
+
 
     Backbone.FormTableView = MyViewConstructor.TemplateView.extend({
         el: '.wrapper',
@@ -328,4 +360,3 @@
     exports.AppRouter = Backbone.AppRouter
 
 })(typeof module === "object" ? module.exports : window)
-
