@@ -1,0 +1,137 @@
+
+main#triple{
+	$triple-light-green: rgba(176,204,153,1);
+	$triple-green: rgba(103,126,82,1);
+	$triple-white: rgba(255,240,215,1);
+	$triple-brown: rgba(102,85,68,1);
+
+	@mixin tri-fold($sidePanel,$centerPanel,$position) {
+		.tri-fold{
+			position: $position;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+
+			.left-fold{
+				position: absolute;
+				left: 0%;
+				width: 10%;
+				height: 100%;
+				background: $sidePanel;
+			}
+
+			.center-fold{
+				position: absolute;
+				left: 10%;
+				width: 80%;
+				height: 100%;
+				background: $centerPanel;
+			}
+
+			.right-fold{
+				position: absolute;
+				left: 90%;
+				width: 10%;
+				height: 100%;
+				background: $sidePanel;
+			}
+		}
+	}
+
+
+	.triple-wrapper{
+		$font-color: $triple-brown;
+		$center-panel-color: $triple-light-green; 
+		$side-panel-color: $triple-green;
+		$featured-header-font: $triple-white;
+		position: relative;
+		@include tri-fold($side-panel-color,$center-panel-color,fixed);
+
+		header {
+			position: relative;
+			@include tri-fold($side-panel-color,$center-panel-color, absolute);
+			z-index: 5;
+			ul{ 
+				position: relative;
+				font-size: 0;
+				text-align: justify;
+				margin: 0 auto;
+				background: rgba(255,255,255,0);
+				z-index: 5;
+
+				li{
+					padding: 3%;
+					width: 16%;
+					margin: 2%;
+					font-size: medium;
+					font-weight: 400;
+					display:inline-block;
+					border-top: 2px $font-color solid;
+					border-bottom: 2px $font-color solid;
+					text-align: center;
+
+					&.current-header {
+						color: $featured-header-font;
+						border-top: 2px $featured-header-font solid;
+						border-bottom: 2px $featured-header-font solid;
+					}
+
+					&:first-of-type,
+					&:last-of-type {
+						opacity: 0;
+					}
+
+
+					p{
+						margin: 0;
+						text-transform: uppercase;
+						font-size: 1.333em;
+					}
+				}
+			}
+		}
+
+		section{
+			position: relative;
+			@include tri-fold($side-panel-color,$center-panel-color,absolute);
+			z-index: 5;
+			background: rgba(255,255,255,0);
+
+			article{
+				padding: 1%;
+				position: absolute;
+				z-index: 1000;
+				width: 80%;
+				color: $font-color;
+
+				&.left-panel{
+					left: -70%;
+					top: 0%;
+					background: $side-panel-color;
+				}
+				
+				&.center-panel{
+					left: 10%;
+					top: 0%;
+					background: $center-panel-color;
+				}
+
+				&.right-panel{
+					left: 90%;
+					top: 0%;
+					background: $side-panel-color;
+				}
+			}
+
+			article.left-panel {
+				
+			}
+		
+			article.center-panel {
+				
+			}
+
+		}
+	}
+
+}

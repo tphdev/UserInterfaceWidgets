@@ -1,6 +1,6 @@
 ;(function(exports){
     "use strict"
-
+ 
     var $ = require('jQuery'), 
     Masonry = require('masonry-layout'),
     _ = require('lodash'),
@@ -21,16 +21,15 @@
             this.layoutsView = new Backbone.LayoutsView();
             this.rolldownView = new Backbone.RollDownView();
             this.splitView = new Backbone.SplitView();
-
+            this.tripleView = new Backbone.TripleView();
             this.formTableView = new Backbone.FormTableView();
-
-            
 
             Backbone.history.start();
         },
 
         routes: {
             "form-table": "goToFormsTables",
+            "layouts/triple-view": "goToTripleView",
             "layouts/split-view": "goToSplitView",
             "layouts/rolldown": "goToRolldown",
             "layouts": "goToLayouts",
@@ -78,9 +77,16 @@
             this.splitView.render();
         },
 
+        goToTripleView: function(){
+            this.tripleView.render();
+            this.tripleView.loadEvents();
+        },
+
         goToFormsTables: function(){
             this.formTableView.render();
-        }
+        },
+
+
 
 
     });
@@ -100,7 +106,7 @@
             "click button.exit-modal": "toggleModal"
         },
 
-        popOutNav: function(evt){
+        _popOutNav: function(evt){
             evt.preventDefault();
             var evtTarget = $(evt.target);
             $('nav.cbp-spmenu-top').toggleClass('pop-out')
@@ -108,7 +114,7 @@
             evtTarget.hasClass('popped') ? evtTarget.text('-') : evtTarget.text('+')
         },
 
-        toggleModal: function(evt){
+        _toggleModal: function(evt){
             evt.preventDefault();
             $('.md-effect').toggleClass('md-show');
             console.log('toggled')
@@ -330,10 +336,23 @@
                 $sideFlap_Right.addClass('__shift-flap-left')
             }
         }
-        
-
     })
 
+    Backbone.TripleView = MyViewConstructor.TemplateView.extend({
+        el: '.wrapper',
+        view: '_layouts_triple',
+
+        loadEvents:function(){
+            (function(){
+                console.log('events loaded!')
+
+            })()
+
+        }
+
+
+
+    })
 
     Backbone.FormTableView = MyViewConstructor.TemplateView.extend({
         el: '.wrapper',

@@ -19,14 +19,17 @@
             }
             return x
         },
+
         loadTemplate: function(name) {
             return this.stream('./templates/' + name + '.html')
         },
+
         initialize: function(options) {
             this.options = options || {}
             this.model && this.model.on("change", this.render.bind(this))
             this.collection && this.collection.on("sync", this.render.bind(this))
         },
+        
         render: function() {
             var self = this;
             this.loadTemplate(this.options.view || this.view).then(function(fn) {

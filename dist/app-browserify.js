@@ -1065,14 +1065,17 @@ window.onload = app;
             }
             return x;
         },
+
         loadTemplate: function loadTemplate(name) {
             return this.stream("./templates/" + name + ".html");
         },
+
         initialize: function initialize(options) {
             this.options = options || {};
             this.model && this.model.on("change", this.render.bind(this));
             this.collection && this.collection.on("sync", this.render.bind(this));
         },
+
         render: function render() {
             var self = this;
             this.loadTemplate(this.options.view || this.view).then(function (fn) {
@@ -1112,7 +1115,7 @@ window.onload = app;
             this.layoutsView = new Backbone.LayoutsView();
             this.rolldownView = new Backbone.RollDownView();
             this.splitView = new Backbone.SplitView();
-
+            this.tripleView = new Backbone.TripleView();
             this.formTableView = new Backbone.FormTableView();
 
             Backbone.history.start();
@@ -1120,6 +1123,7 @@ window.onload = app;
 
         routes: {
             "form-table": "goToFormsTables",
+            "layouts/triple-view": "goToTripleView",
             "layouts/split-view": "goToSplitView",
             "layouts/rolldown": "goToRolldown",
             layouts: "goToLayouts",
@@ -1165,11 +1169,14 @@ window.onload = app;
             this.splitView.render();
         },
 
+        goToTripleView: function goToTripleView() {
+            this.tripleView.render();
+            this.tripleView.loadEvents();
+        },
+
         goToFormsTables: function goToFormsTables() {
             this.formTableView.render();
-        }
-
-    });
+        } });
 
     Backbone.HomeView = MyViewConstructor.TemplateView.extend({
         el: ".wrapper",
@@ -1186,7 +1193,7 @@ window.onload = app;
             "click button.exit-modal": "toggleModal"
         },
 
-        popOutNav: function popOutNav(evt) {
+        _popOutNav: function _popOutNav(evt) {
             evt.preventDefault();
             var evtTarget = $(evt.target);
             $("nav.cbp-spmenu-top").toggleClass("pop-out");
@@ -1194,7 +1201,7 @@ window.onload = app;
             evtTarget.hasClass("popped") ? evtTarget.text("-") : evtTarget.text("+");
         },
 
-        toggleModal: function toggleModal(evt) {
+        _toggleModal: function _toggleModal(evt) {
             evt.preventDefault();
             $(".md-effect").toggleClass("md-show");
             console.log("toggled");
@@ -1414,6 +1421,17 @@ window.onload = app;
                 $centralFlap.addClass("__shift-center-left");
                 $sideFlap_Right.addClass("__shift-flap-left");
             }
+        }
+    });
+
+    Backbone.TripleView = MyViewConstructor.TemplateView.extend({
+        el: ".wrapper",
+        view: "_layouts_triple",
+
+        loadEvents: function loadEvents() {
+            (function () {
+                console.log("events loaded!");
+            })();
         }
 
     });

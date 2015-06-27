@@ -52,6 +52,11 @@ main#layouts{
 
 	    button{
 	      border: 1px $white-translucent solid;
+
+	      a, a:link, a:visited{
+	      	color: #fff;
+	      	display: block;
+	      }
 	    }
 
 		&.isotope{
