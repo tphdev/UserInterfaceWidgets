@@ -79,7 +79,9 @@
 
         goToTripleView: function(){
             this.tripleView.render();
-            this.tripleView.loadEvents();
+            setTimeout( function(){
+                this.tripleView.loadOffCanvas;
+            }.bind(this),200)
         },
 
         goToFormsTables: function(){
@@ -342,17 +344,45 @@
         el: '.wrapper',
         view: '_layouts_triple',
 
-        loadEvents:function(){
-            (function(){
-                console.log('events loaded!')
+        events: {
+            'click .left-panel': 'moveToLeft' 
 
-            })()
+        },
 
-        }
+        moveToLeft: function(){
+                var $cachCurrent = $('.current-panel'),
+                    $cachLeft = $('.left-panel'),
+                    $cachRight = $('.right-panel'),
+                    $cachOffRight = $('.right-off'),
+                    $cachOffLeft = $('.left-off'),
+                    newArticle = $('<article>').html($cachRight.html()).addClass('right-off');
 
+
+                    $cachLeft.addClass('shifted-left');
+                    $cachRight.addClass('shifted-left');
+                    $cachCurrent.addClass('shifted-left');
+                    $cachOffRight.addClass('shifted-left');
+
+                    setTimeout(function(){
+                        console.log('adjusting classes....')
+                        $('.left-off').remove()
+                        $('.left-panel').removeClass('left-panel').removeClass('shifted-left').addClass('left-off').html('')
+                        $('.current-panel').removeClass('shifted-left').removeClass('current-panel').addClass('left-panel')
+                        $('.right-panel').removeClass('shifted-left').removeClass('right-panel').addClass('current-panel')
+                        $('.right-off').removeClass('shifted-left').removeClass('right-off').addClass('right-panel')   
+                        $('.right-panel').after(newArticle)
+                    },300)
+        },
+
+        loadOffCanvas: function(){
+            var htmlCurrentPanel = $('.current-pan`l').html()
+            $('.right-off').html(htmlCurrentPanel)
+            $('.left-off').html(htmlCurrentPanel)
+        }   
 
 
     })
+
 
     Backbone.FormTableView = MyViewConstructor.TemplateView.extend({
         el: '.wrapper',

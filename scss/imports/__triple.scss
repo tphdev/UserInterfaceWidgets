@@ -11,6 +11,7 @@ main#triple{
 			width: 100%;
 			height: 100%;
 			z-index: 0;
+			overflow: hidden;
 
 			.left-fold{
 				position: absolute;
@@ -96,31 +97,68 @@ main#triple{
 			@include tri-fold($side-panel-color,$center-panel-color,absolute);
 			z-index: 5;
 			background: rgba(255,255,255,0);
+			overflow: hidden;
 
 			article{
 				padding: 1%;
-				position: absolute;
 				z-index: 1000;
 				width: 80%;
 				color: $font-color;
+				position: absolute;
+				height: 100%;
+				background: rgba(255,255,255,0);
+				transition: all .2s;
+				transition-timing-function: linear;	
+
+				&.current-panel{
+					position: relative;
+					left: 10%;
+					top: 0%;
+
+					&.shifted-left{
+						left: -70%;
+					}
+
+					&.shifted-right{
+						left: 90%;
+					}
+				}
 
 				&.left-panel{
 					left: -70%;
 					top: 0%;
-					background: $side-panel-color;
-				}
-				
-				&.center-panel{
-					left: 10%;
-					top: 0%;
-					background: $center-panel-color;
+					cursor: pointer;
+
+					&.shifted-left{
+						left: -150%;
+					}
+
+					&.shifted-right{
+						left: 10%;
+					}
 				}
 
 				&.right-panel{
 					left: 90%;
 					top: 0%;
-					background: $side-panel-color;
+					cursor: pointer;
+
+					&.shifted-left{
+						left: 10%;
+					}
+
+					&.shifted-right{
+						left: 170%;
+					}
 				}
+				
+				&.left-off,
+				&.right-off{
+					left: 10%;
+					top: 0%;
+				}
+
+				
 			}
 
 			article.left-panel {
