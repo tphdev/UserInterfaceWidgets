@@ -295,7 +295,7 @@
 
     Backbone.RollDownView = MyViewConstructor.TemplateView.extend({
         el: '.wrapper',
-        view: '_layouts_rolldown',
+        view: 'layouts---rolldown',
 
         events: {
             'click a.jump-to':'scrollToPlace'
@@ -313,12 +313,11 @@
                 scrollTop: domElPosition.top - navBarHeight
             },1000)
         }
-
     })
 
     Backbone.SplitView = MyViewConstructor.TemplateView.extend({
         el: '.wrapper',
-        view: '_layouts_split',
+        view: 'layouts---split',
 
         events: {
             "click .open-pane":"showFlap"
@@ -342,7 +341,7 @@
 
     Backbone.TripleView = MyViewConstructor.TemplateView.extend({
         el: '.wrapper',
-        view: '_layouts_triple',
+        view: 'layouts---triple',
 
         events: {
             'click .left-panel': 'moveToLeft' 
