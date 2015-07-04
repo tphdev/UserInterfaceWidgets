@@ -123,7 +123,7 @@ main#details{
 
 
     &.tabs {
-        $section-color: $my-purple;
+        $section-color: $my-yellow;
         background: #fff;
         border: $sct-bd-width solid $section-color;
 
@@ -133,7 +133,7 @@ main#details{
         }
 
         button {
-          background-color: $my-dark-blue;
+          background-color: $my-light-yellow;
         }
 
         .description {
